@@ -72,6 +72,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     libldacBT_dec \
     libbtconfigstore
+
+# Camera
+PRODUCT_PACKAGES += \
+    Snap
     
 # Display
 PRODUCT_PACKAGES += \
