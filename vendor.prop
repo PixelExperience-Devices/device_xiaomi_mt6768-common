@@ -362,6 +362,7 @@ ro.vendor.mtk_embms_support=1
 persist.vendor.heavy.loading.support=1
 ro.lmk.downgrade_pressure=70
 debug.sf.disable_backpressure=1
+debug.sf.latch_unsignaled=1
 persist.log.tag.CdmaMoSms=S
 persist.log.tag.CdmaMtSms=S
 persist.log.tag.libPowerHal=S
