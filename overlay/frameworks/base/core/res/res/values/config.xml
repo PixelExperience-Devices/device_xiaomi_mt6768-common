@@ -54,6 +54,10 @@
     <!-- Is the device capable of hot swapping an ICC Card -->
      <bool name="config_hotswapCapable">true</bool>
 
+    <!-- Delay that allows some content to arrive at the display before switching
+         from DOZE to ON, in millis. -->
+    <integer name="config_wakeUpDelayDoze">32</integer>
+
     <!-- Is the notification LED intrusive? Used to decide if there should be a disable option -->
      <bool name="config_intrusiveNotificationLed">true</bool>
 
