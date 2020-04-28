@@ -41,6 +41,7 @@ ro.vendor.mtk_c2k_support=1
 ro.vendor.mtk_audio_alac_support=1
 ro.vendor.num_md_protocol=2
 vendor.camera.mdp.dre.enable=0
+ro.vendor.perf.scroll_opt=true
 persist.vendor.camera3.pipeline.bufnum.min.high_ram.imgo=8
 persist.vendor.camera3.pipeline.bufnum.min.low_ram.imgo=6
 persist.vendor.camera3.pipeline.bufnum.base.imgo=5
