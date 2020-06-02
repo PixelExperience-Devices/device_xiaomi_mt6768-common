@@ -1206,3 +1206,9 @@ on property:ro.boot.product.hardware.sku=merlinnfc
     
 on property:ro.boot.product.hardware.sku=galahad
     start vendor.nfc_hal_service
+
+on property:persist.sys.MT6768.dt2w=0
+    exec /system/bin/sendevent /dev/input/event3 0 1 4
+
+on property:persist.sys.MT6768.dt2w=1
+    exec /system/bin/sendevent /dev/input/event3 0 1 5
