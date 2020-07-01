@@ -165,6 +165,10 @@ BOARD_HAS_LARGE_FILESYSTEM := true
 
 # HIDL
 DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest.xml
+ODM_MANIFEST_SKUS += \
+    merlinnfc
+
+ODM_MANIFEST_MERLINNFC_FILES := $(DEVICE_PATH)/manifest_merlinnfc.xml
 
 # Properties
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
