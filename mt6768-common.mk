@@ -284,6 +284,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     RcsService
 
+# ImsInit hack
+PRODUCT_PACKAGES += \
+    ImsInit
+
 # WiFi
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/wifi/p2p_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/p2p_supplicant_overlay.conf \
