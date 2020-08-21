@@ -94,3 +94,7 @@ PRODUCT_PACKAGES += \
 # RcsService
 PRODUCT_PACKAGES += \
     RcsService
+
+# WiFi
+PRODUCT_PACKAGES += \
+    TetheringConfigOverlay
