@@ -697,7 +697,6 @@ on post-fs-data
     chmod 660 /dev/alarm
     chown root system /dev/alarm
 
-	mkdir /data/vendor/charge_logger 0771 system system
 
     #Create persist for camera calibration data
     mkdir /mnt/vendor/persist/camera 0755 system system
@@ -949,17 +948,6 @@ on boot
     chown system radio /dev/ttyGS1
 
     chown system system /sys/class/thermal/thermal_message/sconfig
-
-# add charge_logger service for dump charge message
-service charge_logger /vendor/bin/charge_logger
-	class last_start
-	user system
-	group system system wakelock
-	disabled
-	oneshot
-
-on property:sys.boot_completed=1
-	start charge_logger
 
 on property:vold.decrypt=trigger_reset_main
     write /proc/bootprof "INIT:vold.decrypt=trigger_reset_main"

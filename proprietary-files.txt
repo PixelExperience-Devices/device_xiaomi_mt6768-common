@@ -714,7 +714,6 @@ vendor/bin/ccci_mdinit
 vendor/bin/ccci_rpcd
 vendor/bin/CFR_para2_J15_Macro_2M_v515.bin
 vendor/bin/CFR_para2_J15_UW_v504.bin
-vendor/bin/charge_logger
 vendor/bin/charon
 vendor/bin/dconfig
 vendor/bin/dexecutor
