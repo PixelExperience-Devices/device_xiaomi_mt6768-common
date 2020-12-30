@@ -8,7 +8,6 @@ vendor/lib/libaudiocustparam_vendor.so
 vendor/lib/libaudiodcrflt_vendor.so
 vendor/lib/libaudiofmtconv.so
 vendor/lib/libaudioloudc.so
-vendor/lib/libaudioprimarydevicehalifclient.so
 vendor/lib/libaudiotoolkit_vendor.so
 vendor/lib/libaudio_param_parser-vnd.so
 vendor/lib/libtinycompress.so
@@ -22,19 +21,15 @@ vendor/lib64/libaudiocustparam_vendor.so
 vendor/lib64/libaudiodcrflt_vendor.so
 vendor/lib64/libaudiofmtconv.so
 vendor/lib64/libaudioloudc.so
-vendor/lib64/libaudioprimarydevicehalifclient.so
 vendor/lib64/libaudiotoolkit_vendor.so
 vendor/lib64/libaudio_param_parser-vnd.so
 vendor/lib64/libtinycompress.so
 vendor/lib64/soundfx/libaudiopreprocessing.so
 
 # Audio-Hardware
-vendor/bin/hw/android.hardware.audio@5.0-service-mediatek
-vendor/etc/init/android.hardware.audio@5.0-service-mediatek.rc
 vendor/lib/android.hardware.audio.common-util.so
 vendor/lib/android.hardware.audio.common@5.0-util.so
 vendor/lib/hw/android.hardware.audio.effect@5.0-impl.so
-vendor/lib/hw/android.hardware.audio@5.0-impl-mediatek.so
 vendor/lib/hw/audio.primary.default.so
 vendor/lib/hw/audio.primary.mt6768.so
 vendor/lib/hw/audio.r_submix.default.so
@@ -42,11 +37,9 @@ vendor/lib/hw/audio.r_submix.mt6768.so
 vendor/lib/hw/audio.usb.default.so
 vendor/lib/hw/audio.usb.mt6768.so
 vendor/lib/hw/audio_policy.stub.so
-vendor/lib/vendor.mediatek.hardware.audio@5.1.so
 vendor/lib64/android.hardware.audio.common-util.so
 vendor/lib64/android.hardware.audio.common@5.0-util.so
 vendor/lib64/hw/android.hardware.audio.effect@5.0-impl.so
-vendor/lib64/hw/android.hardware.audio@5.0-impl-mediatek.so
 vendor/lib64/hw/audio.primary.default.so
 vendor/lib64/hw/audio.primary.mt6768.so
 vendor/lib64/hw/audio.r_submix.default.so
@@ -54,7 +47,6 @@ vendor/lib64/hw/audio.r_submix.mt6768.so
 vendor/lib64/hw/audio.usb.default.so
 vendor/lib64/hw/audio.usb.mt6768.so
 vendor/lib64/hw/audio_policy.stub.so
-vendor/lib64/vendor.mediatek.hardware.audio@5.1.so
 
 # Bluetooth
 vendor/bin/hw/android.hardware.bluetooth@1.0-service-mediatek
