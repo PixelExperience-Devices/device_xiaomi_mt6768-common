@@ -796,30 +796,12 @@ vendor/lib64/libwifi-hal.so
 vendor/lib64/libwpa_client.so
 
 # Xiaomi
-vendor/bin/hw/vendor.xiaomi.hardware.misys@1.0-service
-vendor/bin/hw/vendor.xiaomi.hardware.misys@2.0-service
-vendor/bin/hw/vendor.xiaomi.hardware.misys@3.0-service
 vendor/bin/LDC_packdata_xiaomi_C3_src1_3264x2448_v4_20190730.dat
 vendor/bin/LDC_packdata_xiaomi_J15_Ofilm_3264x2448_v2_20200305.dat
 vendor/bin/LDC_packdata_xiaomi_J15_Sunny_3264x2448_v2_20200305.dat
-vendor/etc/init/vendor.xiaomi.hardware.misys@1.0-service.rc
-vendor/etc/init/vendor.xiaomi.hardware.misys@2.0-service.rc
-vendor/etc/init/vendor.xiaomi.hardware.misys@3.0-service.rc
-vendor/lib/hw/vendor.xiaomi.hardware.misys@1.0-impl.so
-vendor/lib/hw/vendor.xiaomi.hardware.misys@2.0-impl.so
-vendor/lib/hw/vendor.xiaomi.hardware.misys@3.0-impl.so
-vendor/lib/vendor.xiaomi.hardware.misys@1.0.so
-vendor/lib/vendor.xiaomi.hardware.misys@2.0.so
-vendor/lib/vendor.xiaomi.hardware.misys@3.0.so
 vendor/lib/vendor.xiaomi.hardware.mtdservice@1.0.so
 vendor/lib/vendor.xiaomi.hardware.mtdservice@1.1.so
 vendor/lib/vendor.xiaomi.hardware.mtdservice@1.2.so
-vendor/lib64/hw/vendor.xiaomi.hardware.misys@1.0-impl.so
-vendor/lib64/hw/vendor.xiaomi.hardware.misys@2.0-impl.so
-vendor/lib64/hw/vendor.xiaomi.hardware.misys@3.0-impl.so
-vendor/lib64/vendor.xiaomi.hardware.misys@1.0.so
-vendor/lib64/vendor.xiaomi.hardware.misys@2.0.so
-vendor/lib64/vendor.xiaomi.hardware.misys@3.0.so
 vendor/lib64/vendor.xiaomi.hardware.mtdservice@1.0.so
 vendor/lib64/vendor.xiaomi.hardware.mtdservice@1.1.so
 vendor/lib64/vendor.xiaomi.hardware.mtdservice@1.2.so
@@ -1239,7 +1221,6 @@ vendor/lib/libcares_naptr.so
 vendor/lib/libcarrierconfig.so
 vendor/lib/libccci_util.so
 vendor/lib/libcharon-ss.so
-vendor/lib/libcheckpid.so
 vendor/lib/libchrome.so
 vendor/lib/libcrypto-ss.so
 vendor/lib/libcurl-ss.so
@@ -1425,7 +1406,6 @@ vendor/lib64/libcares_naptr.so
 vendor/lib64/libcarrierconfig.so
 vendor/lib64/libccci_util.so
 vendor/lib64/libcharon-ss.so
-vendor/lib64/libcheckpid.so
 vendor/lib64/libchrome.so
 vendor/lib64/libcrypto-ss.so
 vendor/lib64/libcurl-ss.so
