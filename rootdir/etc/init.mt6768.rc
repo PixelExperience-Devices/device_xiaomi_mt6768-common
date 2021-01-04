@@ -1284,6 +1284,16 @@ on property:persist.sys.start.meidservice=1
 
 on property:odm.audio.typec.status=*
     setprop vendor.audio.typec.status ${odm.audio.typec.status}
+
+service vendor.nfc_hal_service /vendor/bin/hw/android.hardware.nfc@1.2-service
+    override
+    class hal
+    user nfc
+    group nfc
+    disabled
+
+on property:ro.boot.product.hardware.sku=merlinnfc
+    start vendor.nfc_hal_service
     
 # Disable AOSP RIL if MTK RIL is up
 on property:vendor.ril.mtk=1
