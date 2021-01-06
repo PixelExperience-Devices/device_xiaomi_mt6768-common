@@ -66,8 +66,6 @@ debug.sf.enable_hwc_vds=0
 
 # Radio
 persist.internalAntenna.enable=true
-vendor.rild.libargs=-d /dev/ttyC0
-vendor.rild.libpath=mtk-ril.so
 
 # USB
 persist.vendor.otg_control=true

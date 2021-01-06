@@ -1290,7 +1290,3 @@ service vendor.nfc_hal_service /vendor/bin/hw/android.hardware.nfc@1.2-service
 
 on property:ro.boot.product.hardware.sku=merlinnfc
     start vendor.nfc_hal_service
-    
-# Disable AOSP RIL if MTK RIL is up
-on property:vendor.ril.mtk=1
-    stop vendor.ril-daemon
