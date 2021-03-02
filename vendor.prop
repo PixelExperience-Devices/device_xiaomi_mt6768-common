@@ -3,7 +3,6 @@ drm.service.enabled=true
 ro.carrier=unknown
 sys.fp.miui.token=0
 ro.vendor.audio.game.effect=false
-ro.vendor.audio.soundfx.type=mi
 ro.vendor.mtk_shutdown_support=0
 vendor.camera.mdp.cz.enable=1
 ro.opengles.version=196610

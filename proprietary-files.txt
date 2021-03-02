@@ -12,7 +12,6 @@ vendor/lib/libaudiotoolkit_vendor.so
 vendor/lib/libaudio_param_parser-vnd.so
 vendor/lib/libtinycompress.so
 vendor/lib/soundfx/libaudiopreprocessing.so
-vendor/lib/soundfx/libmisoundfx.so
 vendor/lib64/libaudiocompensationfilterc.so
 vendor/lib64/libaudiocompensationfilter_vendor.so
 vendor/lib64/libaudiocomponentenginec.so
@@ -969,7 +968,6 @@ vendor/etc/ipsec/ipsec.d/cacerts/VeriSignClass3G5.der
 vendor/etc/ipsec/ipsec.d/cacerts/VeriSignUniversalRootCertification.der
 vendor/etc/ipsec/ssl/openssl.cnf
 vendor/etc/ipsec/strongswan.conf
-vendor/etc/misound_res.bin
 vendor/etc/mtk_omx_core.cfg
 vendor/etc/partition_permission.sh
 vendor/etc/pm_test_item_config.xml
@@ -1226,7 +1224,6 @@ vendor/lib/libJpgEncPipe.so
 vendor/lib/libladder.so
 vendor/lib/liblogwrap_vendor.so
 vendor/lib/libminiui.so
-vendor/lib/libmisound.so
 vendor/lib/libmmprofile.so
 vendor/lib/libmnetlink_v104.so
 vendor/lib/libmnl.so
@@ -1419,7 +1416,6 @@ vendor/lib64/liblogwrap_vendor.so
 vendor/lib64/liblpcnr.so
 vendor/lib64/libmfllcore.so
 vendor/lib64/libminiui.so
-vendor/lib64/libmisound.so
 vendor/lib64/libmiStereoFactoryRemapLib.so
 vendor/lib64/libmi_bokehcap.so
 vendor/lib64/libmi_bokehpre.so
