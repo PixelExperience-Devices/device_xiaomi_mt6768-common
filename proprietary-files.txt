@@ -27,33 +27,16 @@ vendor/lib64/libtinycompress.so
 vendor/lib64/soundfx/libaudiopreprocessing.so
 
 # Audio-Hardware
-vendor/lib/android.hardware.audio.common-util.so
-vendor/lib/android.hardware.audio.common@5.0-util.so
-vendor/lib/hw/android.hardware.audio.effect@5.0-impl.so
-vendor/lib/hw/audio.primary.default.so
 vendor/lib/hw/audio.primary.mt6768.so
-vendor/lib/hw/audio.r_submix.default.so
 vendor/lib/hw/audio.r_submix.mt6768.so
-vendor/lib/hw/audio.usb.default.so
 vendor/lib/hw/audio.usb.mt6768.so
-vendor/lib/hw/audio_policy.stub.so
-vendor/lib64/android.hardware.audio.common-util.so
-vendor/lib64/android.hardware.audio.common@5.0-util.so
-vendor/lib64/hw/android.hardware.audio.effect@5.0-impl.so
-vendor/lib64/hw/audio.primary.default.so
 vendor/lib64/hw/audio.primary.mt6768.so
-vendor/lib64/hw/audio.r_submix.default.so
 vendor/lib64/hw/audio.r_submix.mt6768.so
-vendor/lib64/hw/audio.usb.default.so
 vendor/lib64/hw/audio.usb.mt6768.so
-vendor/lib64/hw/audio_policy.stub.so
 
 # Bluetooth
 vendor/bin/hw/android.hardware.bluetooth@1.0-service-mediatek
-vendor/etc/audio_policy_configuration_bluetooth_legacy_hal.xml
-vendor/etc/bluetooth_audio_policy_configuration.xml
 vendor/etc/init/android.hardware.bluetooth@1.0-service-mediatek.rc
-vendor/lib/hw/android.hardware.bluetooth.audio@2.0-impl.so
 vendor/lib/hw/android.hardware.bluetooth@1.0-impl-mediatek.so
 vendor/lib/hw/audio.bluetooth.default.so
 vendor/lib/libbluetoothem_mtk.so
@@ -63,7 +46,6 @@ vendor/lib/libbluetooth_mtk.so
 vendor/lib/libbluetooth_mtk_pure.so
 vendor/lib/libbluetooth_relayer.so
 vendor/lib/libbt-vendor.so
-vendor/lib64/hw/android.hardware.bluetooth.audio@2.0-impl.so
 vendor/lib64/hw/android.hardware.bluetooth@1.0-impl-mediatek.so
 vendor/lib64/hw/audio.bluetooth.default.so
 vendor/lib64/libbluetoothem_mtk.so
@@ -157,9 +139,6 @@ vendor/lib64/libarcsoft_super_night.so
 vendor/bin/hw/camerahalserver
 
 # Camera-configs
-vendor/camera/fonts/MFYueYuan-Regular.ttf
-vendor/camera/fonts/MI+LanTing_GB+Outside+YS_V2.3_20160322.ttf
-vendor/camera/fonts/MIUI_Time.ttf
 vendor/etc/camera/fonts.xml
 vendor/etc/camera/merlin_goldResult.bin
 vendor/etc/camera/Miui-Light.ttf
@@ -177,10 +156,6 @@ vendor/etc/camera/Roboto-Thin.ttf
 vendor/etc/camera/vidhance_calibration
 vendor/etc/camera/watermark_font_2300_3199.dat
 
-# Configstore
-vendor/bin/hw/android.hardware.configstore@1.1-service
-vendor/etc/init/android.hardware.configstore@1.1-service.rc
-
 # Consumerir
 vendor/lib/hw/consumerir.mt6768.so
 vendor/lib64/hw/consumerir.mt6768.so
@@ -190,45 +165,21 @@ vendor/lib/liboemcrypto.so
 vendor/lib64/liboemcrypto.so
 
 # DRM-Hardware
-vendor/bin/hw/android.hardware.drm@1.0-service
-vendor/bin/hw/android.hardware.drm@1.2-service.clearkey
 vendor/bin/hw/android.hardware.drm@1.2-service.widevine
-vendor/etc/init/android.hardware.drm@1.0-service.rc
-vendor/etc/init/android.hardware.drm@1.2-service.clearkey.rc
 vendor/etc/init/android.hardware.drm@1.2-service.widevine.rc
-vendor/lib/hw/android.hardware.drm@1.0-impl.so
+-vendor/etc/vintf/manifest/manifest_android.hardware.drm@1.2-service.widevine.xml
 
 # DRM-Widevine
 vendor/lib/libwvhidl.so
-vendor/lib/mediadrm/libdrmclearkeyplugin.so
-vendor/lib/mediadrm/libmockdrmcryptoplugin.so
 vendor/lib/mediadrm/libwvdrmengine.so
 vendor/lib64/libwvhidl.so
-vendor/lib64/mediadrm/libdrmclearkeyplugin.so
-vendor/lib64/mediadrm/libmockdrmcryptoplugin.so
 vendor/lib64/mediadrm/libwvdrmengine.so
 
 # Display-Hardware
-vendor/bin/hw/android.hardware.graphics.allocator@2.0-service
-vendor/bin/hw/android.hardware.graphics.composer@2.1-service
-vendor/bin/hw/android.hardware.memtrack@1.0-service
-vendor/etc/init/android.hardware.graphics.allocator@2.0-service.rc
-vendor/etc/init/android.hardware.graphics.composer@2.1-service.rc
-vendor/etc/init/android.hardware.memtrack@1.0-service.rc
-vendor/lib/hw/android.hardware.graphics.allocator@2.0-impl.so
-vendor/lib/hw/android.hardware.graphics.composer@2.1-impl.so
-vendor/lib/hw/android.hardware.graphics.mapper@2.0-impl-2.1.so
-vendor/lib/hw/android.hardware.memtrack@1.0-impl.so
-vendor/lib/hw/gralloc.default.so
 vendor/lib/hw/gralloc.mt6768.so
 vendor/lib/hw/memtrack.mt6768.so
 vendor/lib/hw/vendor.xiaomi.hardware.displayfeature@1.0-impl.so
 vendor/lib/vendor.xiaomi.hardware.displayfeature@1.0.so
-vendor/lib64/hw/android.hardware.graphics.allocator@2.0-impl.so
-vendor/lib64/hw/android.hardware.graphics.composer@2.1-impl.so
-vendor/lib64/hw/android.hardware.graphics.mapper@2.0-impl-2.1.so
-vendor/lib64/hw/android.hardware.memtrack@1.0-impl.so
-vendor/lib64/hw/gralloc.default.so
 vendor/lib64/hw/gralloc.mt6768.so
 vendor/lib64/hw/hwcomposer.mt6768.so
 vendor/lib64/hw/memtrack.mt6768.so
@@ -303,11 +254,7 @@ vendor/lib64/hw/gps.default.so
 # GPS-Hardware
 
 # Gatekeeper
-vendor/bin/hw/android.hardware.gatekeeper@1.0-service
-vendor/etc/init/android.hardware.gatekeeper@1.0-service.rc
-vendor/lib/hw/android.hardware.gatekeeper@1.0-impl.so
 vendor/lib/hw/gatekeeper.mt6768.so
-vendor/lib64/hw/android.hardware.gatekeeper@1.0-impl.so
 vendor/lib64/hw/gatekeeper.mt6768.so
 
 # Graphics
@@ -321,9 +268,16 @@ vendor/lib64/egl/libGLES_meow.so
 vendor/lib64/egl/libMEOW_trace.so
 vendor/lib64/libOpenCL.so
 
-# Health
-vendor/bin/hw/android.hardware.health@2.0-service
-vendor/etc/init/android.hardware.health@2.0-service.rc
+# Kernel-Modules
+vendor/lib/modules/bt_drv.ko:vendor/lib/modules_prebuilt/bt_drv.ko
+vendor/lib/modules/fmradio_drv.ko:vendor/lib/modules_prebuilt/fmradio_drv.ko
+vendor/lib/modules/fpsgo.ko:vendor/lib/modules_prebuilt/fpsgo.ko
+vendor/lib/modules/gps_drv.ko:vendor/lib/modules_prebuilt/gps_drv.ko
+vendor/lib/modules/met.ko:vendor/lib/modules_prebuilt/met.ko
+vendor/lib/modules/udc_lib.ko:vendor/lib/modules_prebuilt/udc_lib.ko
+vendor/lib/modules/wlan_drv_gen4m.ko:vendor/lib/modules_prebuilt/wlan_drv_gen4m.ko
+vendor/lib/modules/wmt_chrdev_wifi.ko:vendor/lib/modules_prebuilt/wmt_chrdev_wifi.ko
+vendor/lib/modules/wmt_drv.ko:vendor/lib/modules_prebuilt/wmt_drv.ko
 
 # Keymaster
 vendor/bin/hw/android.hardware.keymaster@4.0-service.beanpod
@@ -347,9 +301,7 @@ vendor/lib/hw/lights.mt6768.so
 vendor/lib64/hw/lights.mt6768.so
 
 # Listen
-vendor/lib/hw/android.hardware.soundtrigger@2.2-impl.so
 vendor/lib/hw/sound_trigger.primary.mt6768.so
-vendor/lib64/hw/android.hardware.soundtrigger@2.2-impl.so
 vendor/lib64/hw/sound_trigger.primary.mt6768.so
 
 # Mediatek
@@ -360,6 +312,8 @@ vendor/bin/hw/android.hardware.wifi@1.0-service-lazy-mediatek
 vendor/bin/hw/vendor.mediatek.hardware.dfps@1.0-service
 vendor/bin/hw/vendor.mediatek.hardware.dplanner@2.0-service
 vendor/bin/hw/vendor.mediatek.hardware.gpu@1.0-service
+-vendor/etc/vintf/manifest/manifest_android.hardware.gpu@1.0-service.xml
+-vendor/etc/vintf/manifest/manifest_vendor.mediatek.hardware.dplanner@2.0-service.xml
 vendor/bin/hw/vendor.mediatek.hardware.log@1.0-service
 vendor/bin/hw/vendor.mediatek.hardware.mms@1.5-service
 vendor/bin/hw/vendor.mediatek.hardware.mtkcodecservice@1.1-service
@@ -564,7 +518,6 @@ vendor/lib64/vendor.mediatek.hardware.wifi.supplicant@2.0.so
 vendor/lib64/vendor.mediatek.hardware.wifi.supplicant@2.1.so
 
 # NFC
-vendor/bin/hw/vendor.nxp.hardware.nfc@1.2-service
 vendor/etc/device_features/merlinnfc.xml
 vendor/etc/libese-nxp.conf
 vendor/etc/libnfc-nci.conf
@@ -573,12 +526,9 @@ vendor/etc/libnfc-nxp.conf
 vendor/etc/libnfc-nxp_RF.conf
 vendor/etc/sn100u_nfcon.pnscr
 vendor/lib/ls_client.so
-vendor/lib/nfc_nci.nqx.default.hw.so
 vendor/lib/secure_element-impl.so
 vendor/lib64/ls_client.so
-vendor/lib64/nfc_nci.nqx.default.hw.so
 vendor/lib64/secure_element-impl.so
-vendor/lib64/vendor.nxp.hardware.nfc@1.0.so
 vendor/lib64/vendor.nxp.hardware.nfc@1.1.so
 
 # Neural-networks
@@ -603,9 +553,7 @@ vendor/lib64/hw/power.mt6768.so
 vendor/lib/libvsim.so
 
 # Sensors
-vendor/lib/libsensorndkbridge.so
 vendor/lib64/hw/sensors.mt6768.so
-vendor/lib64/libsensorndkbridge.so
 vendor/lib64/libsensor_custom.so
 
 # Soter
@@ -616,7 +564,6 @@ vendor/etc/init/vendor.microtrust.hardware.soter@1.0-service.rc
 vendor/lib64/vendor.microtrust.hardware.soter@1.0.so
 
 # Thermal
-vendor/bin/hw/android.hardware.thermal@1.0-service
 vendor/bin/mi_thermald
 vendor/bin/thermal
 vendor/bin/thermalloadalgod
@@ -627,7 +574,6 @@ vendor/etc/.tp/.thermal_policy_05
 vendor/etc/.tp/.thermal_policy_08
 vendor/etc/.tp/thermal.conf
 vendor/etc/.tp/thermal.off.conf
-vendor/etc/init/android.hardware.thermal@1.0-service.rc
 vendor/etc/init/init.thermal.rc
 vendor/etc/init/init.thermalloadalgod.rc
 vendor/etc/init/init.thermal_manager.rc
@@ -641,25 +587,11 @@ vendor/etc/thermal-phone.conf
 vendor/etc/thermal-tgame.conf
 vendor/etc/thermal-youtube.conf
 vendor/etc/thermald-devices.conf
-vendor/lib/hw/android.hardware.thermal@1.0-impl.so
 vendor/lib/libthermalalgo.so
-vendor/lib64/hw/android.hardware.thermal@1.0-impl.so
 
 # Thermal-Hardware
 vendor/lib/hw/thermal.mt6768.so
 vendor/lib64/hw/thermal.mt6768.so
-
-# Time
-
-# Vibrator
-vendor/bin/hw/android.hardware.vibrator@1.0-service
-vendor/etc/init/android.hardware.vibrator@1.0-service.rc
-vendor/lib/hw/android.hardware.vibrator@1.0-impl.so
-vendor/lib/hw/vibrator.default.so
-vendor/lib64/hw/android.hardware.vibrator@1.0-impl.so
-vendor/lib64/hw/vibrator.default.so
-
-# WiFi
 
 # Xiaomi
 vendor/bin/hw/vendor.xiaomi.hardware.misys@1.0-service
@@ -690,6 +622,10 @@ vendor/lib64/vendor.xiaomi.hardware.mtdservice@1.0.so
 vendor/lib64/vendor.xiaomi.hardware.mtdservice@1.1.so
 vendor/lib64/vendor.xiaomi.hardware.mtdservice@1.2.so
 
+# Media-Hardware
+vendor/lib/libstagefrighthw.so
+vendor/lib64/libstagefrighthw.so
+
 # Misc
 vendor/bin/aeev
 vendor/bin/aee_aedv
@@ -714,7 +650,6 @@ vendor/bin/dmc_core
 vendor/bin/doeapp-memtester
 vendor/bin/doeapp-sat
 vendor/bin/dtc_vendor
-vendor/bin/dumpsys
 vendor/bin/em_hidl
 vendor/bin/epdg_wod
 vendor/bin/factory
@@ -792,7 +727,6 @@ vendor/bin/wmt_loader
 vendor/data/misc/pdc.txt
 vendor/data/misc/ProjectConfig.mk
 vendor/etc/.tp/.ht120.mtc
-vendor/etc/a2dp_in_audio_policy_configuration.xml
 vendor/etc/aee-config
 vendor/etc/agps_profiles_conf2.xml
 vendor/etc/apdb/APDB_MT6768_S01__W2006
@@ -813,8 +747,6 @@ vendor/etc/ecc_list_OP17.xml
 vendor/etc/ecc_list_OP18.xml
 vendor/etc/ecc_list_OP20.xml
 vendor/etc/factory.ini
-vendor/etc/fstab.enableswap
-vendor/etc/fstab.mt6768
 vendor/etc/fstb.cfg
 vendor/etc/init/aee_aedv.rc
 vendor/etc/init/aee_aedv64.rc
@@ -1177,31 +1109,6 @@ vendor/lib/libsn100u_fw.so
 vendor/lib/libspeechparser_vendor.so
 vendor/lib/libspeech_enh_lib.so
 vendor/lib/libssl-ss.so
-vendor/lib/libstagefright_amrnb_common.so
-vendor/lib/libstagefright_enc_common.so
-vendor/lib/libstagefright_flacdec.so
-vendor/lib/libstagefright_softomx.so
-vendor/lib/libstagefright_softomx_plugin.so
-vendor/lib/libstagefright_soft_aacdec.so
-vendor/lib/libstagefright_soft_aacenc.so
-vendor/lib/libstagefright_soft_amrdec.so
-vendor/lib/libstagefright_soft_amrnbenc.so
-vendor/lib/libstagefright_soft_amrwbenc.so
-vendor/lib/libstagefright_soft_avcdec.so
-vendor/lib/libstagefright_soft_avcenc.so
-vendor/lib/libstagefright_soft_flacdec.so
-vendor/lib/libstagefright_soft_flacenc.so
-vendor/lib/libstagefright_soft_g711dec.so
-vendor/lib/libstagefright_soft_gsmdec.so
-vendor/lib/libstagefright_soft_hevcdec.so
-vendor/lib/libstagefright_soft_mp3dec.so
-vendor/lib/libstagefright_soft_mpeg4dec.so
-vendor/lib/libstagefright_soft_mpeg4enc.so
-vendor/lib/libstagefright_soft_opusdec.so
-vendor/lib/libstagefright_soft_rawdec.so
-vendor/lib/libstagefright_soft_vorbisdec.so
-vendor/lib/libstagefright_soft_vpxdec.so
-vendor/lib/libstagefright_soft_vpxenc.so
 vendor/lib/libstorage_otp.so
 vendor/lib/libstrongswan.so
 vendor/lib/libsysenv.so
