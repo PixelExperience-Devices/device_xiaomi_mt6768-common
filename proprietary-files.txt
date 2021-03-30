@@ -303,7 +303,6 @@ vendor/lib/hw/sound_trigger.primary.mt6768.so
 vendor/lib64/hw/sound_trigger.primary.mt6768.so
 
 # Mediatek
-vendor/bin/hw/android.hardware.secure_element@1.0-service-mediatek
 vendor/bin/hw/android.hardware.sensors@2.0-service-mediatek
 vendor/bin/hw/android.hardware.usb@1.1-service-mediatek
 vendor/bin/hw/android.hardware.wifi@1.0-service-lazy-mediatek
@@ -723,7 +722,6 @@ vendor/lib/ls_client.so
 vendor/lib/secure_element-impl.so
 vendor/lib64/ls_client.so
 vendor/lib64/secure_element-impl.so
-vendor/lib64/vendor.nxp.hardware.nfc@1.1.so
 
 # Neural-networks
 vendor/bin/hw/android.hardware.neuralnetworks@1.1-service-cpunn
