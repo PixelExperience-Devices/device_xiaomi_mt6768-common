@@ -1,0 +1,2 @@
+on boot
+    insmod /vendor/lib/modules_prebuilt/wmt_drv.ko
