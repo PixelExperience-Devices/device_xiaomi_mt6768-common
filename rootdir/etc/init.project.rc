@@ -106,14 +106,6 @@ service mmc_ffu /vendor/bin/mmc_ffu do /vendor/bin/emmc.bin /dev/block/mmcblk0 1
 	group system
 	oneshot
 
-
-service service_nv_protect /vendor/bin/misc_writer --nv_protect
-    disabled
-    oneshot
-
-on property:ctl.vendor.service_nv_protect=start
-    start service_nv_protect
-
 on boot
     setprop vendor.debug.camera.enableMetaPending 0
     setprop vendor.debug.camera.enableMetaMerge 0
