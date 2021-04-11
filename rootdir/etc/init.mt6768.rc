@@ -707,7 +707,7 @@ on post-fs-data
 # -----------------------
 
 on boot
-    setprop init.svc.console stopped
+    stop console
     
     write /proc/bootprof "INIT:boot"
 
