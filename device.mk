@@ -311,3 +311,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     WifiOverlay \
     TetheringConfigOverlay
+
+# SKU-specific properties
+PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/configs/sku_props/build_merlin.prop:$(TARGET_COPY_OUT_VENDOR)/build_merlin.prop \
+    $(DEVICE_PATH)/configs/sku_props/build_merlinnfc.prop:$(TARGET_COPY_OUT_VENDOR)/build_merlinnfc.prop \
+    $(DEVICE_PATH)/configs/sku_props/build_ss_vendor.prop:$(TARGET_COPY_OUT_VENDOR)/build_ss_vendor.prop \
+    $(DEVICE_PATH)/configs/sku_props/build_dsds_vendor.prop:$(TARGET_COPY_OUT_VENDOR)/build_dsds_vendor.prop

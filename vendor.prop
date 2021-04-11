@@ -435,3 +435,5 @@ ro.vendor.display.sensortype=2
 vendor.display.svi.config=1
 vendor.display.svi.config_path=/system/etc/SVIConfig.xml
 persist.vendor.max.brightness=465
+import /vendor/build_${ro.boot.product.hardware.sku}.prop
+import /vendor/build_${ro.boot.radio.multisim.config}_vendor.prop
