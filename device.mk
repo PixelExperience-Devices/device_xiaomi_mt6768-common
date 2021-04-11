@@ -45,7 +45,9 @@ PRODUCT_PACKAGES += \
     libeffectproxy \
     libldnhncr \
     libreverbwrapper \
-    libvisualizer
+    libvisualizer \
+    libalsautils \
+    libnbaio_mono
 
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/configs/audio/audio_device.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_device.xml \
