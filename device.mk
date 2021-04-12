@@ -320,3 +320,7 @@ PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/configs/sku_props/build_merlinnfc.prop:$(TARGET_COPY_OUT_VENDOR)/build_merlinnfc.prop \
     $(DEVICE_PATH)/configs/sku_props/build_ss_vendor.prop:$(TARGET_COPY_OUT_VENDOR)/build_ss_vendor.prop \
     $(DEVICE_PATH)/configs/sku_props/build_dsds_vendor.prop:$(TARGET_COPY_OUT_VENDOR)/build_dsds_vendor.prop
+
+# USB
+PRODUCT_PACKAGES += \
+    android.hardware.usb@1.1-service.merlin
