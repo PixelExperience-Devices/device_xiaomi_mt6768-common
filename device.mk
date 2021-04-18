@@ -326,4 +326,5 @@ PRODUCT_COPY_FILES += \
 
 # USB
 PRODUCT_PACKAGES += \
-    android.hardware.usb@1.1-service.merlin
+    android.hardware.usb@1.1-service.merlin \
+    android.hardware.usb.gadget@1.1-service.merlin
