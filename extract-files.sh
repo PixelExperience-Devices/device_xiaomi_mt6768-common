@@ -75,6 +75,7 @@ function blob_fixup() {
         ;;
     vendor/lib64/libkeymaster4.so) # Use vndk-v29 dependencies
         patchelf --replace-needed libkeymaster_portable.so libkeymaster_portable-v29.so ${2}
+        patchelf --replace-needed libkeymaster_messages.so libkeymaster_messages-v29.so ${2}
         patchelf --replace-needed libpuresoftkeymasterdevice.so libpuresoftkeymasterdevice-v29.so ${2}
         ;;
     vendor/bin/hw/android.hardware.wifi@1.0-service-lazy-mediatek)
