@@ -36,8 +36,13 @@ on init
     setprop sys.usb.ffs.aio_compat 1
     
     # DT2W
+    chown system input /dev/input/event0
+    chown system input /dev/input/event1
     chown system input /dev/input/event2
     chown system input /dev/input/event3
+    chown system input /dev/input/event4
+    chown system input /dev/input/event5
+    chown system input /dev/input/event6
 
 # change lk_env permission
     chown root system /proc/lk_env
