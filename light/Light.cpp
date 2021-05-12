@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#define LOG_TAG "android.hardware.light@2.0-service.merlin"
+#define LOG_TAG "android.hardware.light@2.0-service.mt6768"
 
 #include <log/log.h>
 

@@ -8,7 +8,7 @@
 
 set -e
 
-DEVICE=merlin
+COMMON=mt6768-common
 VENDOR=xiaomi
 
 # Load extract_utils and do some sanity checks
@@ -92,7 +92,7 @@ function blob_fixup() {
 }
 
 # Initialize the helper
-setup_vendor "${DEVICE}" "${VENDOR}" "${ANDROID_ROOT}" false "${CLEAN_VENDOR}"
+setup_vendor "${COMMON}" "${VENDOR}" "${ANDROID_ROOT}" false "${CLEAN_VENDOR}"
 
 extract "${MY_DIR}/proprietary-files.txt" "${SRC}" "${KANG}" --section "${SECTION}"
 

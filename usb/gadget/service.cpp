@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#define LOG_TAG "android.hardware.usb.gadget@1.1-service.merlin"
+#define LOG_TAG "android.hardware.usb.gadget@1.1-service.mt6768"
 
 #include <hidl/HidlTransportSupport.h>
 #include "UsbGadget.h"

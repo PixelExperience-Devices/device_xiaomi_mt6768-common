@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#define LOG_TAG "android.hardware.usb@1.1-service.merlin"
+#define LOG_TAG "android.hardware.usb@1.1-service.mt6768"
 
 #include <android-base/logging.h>
 #include <assert.h>

@@ -8,7 +8,7 @@
 
 set -e
 
-DEVICE=merlin
+COMMON=mt6768-common
 VENDOR=xiaomi
 
 # Load extract_utils and do some sanity checks
@@ -25,7 +25,7 @@ fi
 source "${HELPER}"
 
 # Initialize the helper
-setup_vendor "${DEVICE}" "${VENDOR}" "${ANDROID_ROOT}"
+setup_vendor "${COMMON}" "${VENDOR}" "${ANDROID_ROOT}"
 
 # Warning headers and guards
 write_headers
