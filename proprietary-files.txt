@@ -705,11 +705,21 @@ vendor/lib/secure_element-impl.so
 vendor/lib64/ls_client.so
 vendor/lib64/secure_element-impl.so
 
-# Neural-networks
-vendor/bin/hw/android.hardware.neuralnetworks@1.1-service-cpunn
-vendor/bin/hw/android.hardware.neuralnetworks@1.1-service-gpunn
-vendor/etc/init/android.hardware.neuralnetworks@1.1-service-cpunn.rc
-vendor/etc/init/android.hardware.neuralnetworks@1.1-service-gpunn.rc
+# Neural-networks - from Redmi/merlin/merlin:11/RP1A.200720.011/V12.0.5.0.RJOCNXM:user/release-keys
+system_ext/lib/libarmnn_ndk.mtk.so
+system_ext/lib/libcmdl_ndk.mtk.so
+system_ext/lib/libneuron_opencv_delegate.mtk.so
+system_ext/lib/libneuronusdk_adapter.mtk.so
+system_ext/lib/libnir_neon_driver_ndk.mtk.so
+system_ext/lib64/libarmnn_ndk.mtk.so
+system_ext/lib64/libcmdl_ndk.mtk.so
+system_ext/lib64/libneuron_opencv_delegate.mtk.so
+system_ext/lib64/libneuronusdk_adapter.mtk.so
+system_ext/lib64/libnir_neon_driver_ndk.mtk.so
+vendor/lib/libneuropilot_hal_utils.so
+vendor/lib/libneuropilot_jni_R.so
+vendor/lib64/libneuropilot_hal_utils.so
+vendor/lib64/libneuropilot_jni_R.so
 
 # Perf
 
@@ -1223,9 +1233,6 @@ vendor/lib/libmsbc_mtk.so
 vendor/lib/libmt.so
 vendor/lib/libmtcloader.so
 vendor/lib/libmtee.so
-vendor/lib/libneuroeara.so
-vendor/lib/libneuropilot_hal_utils.so
-vendor/lib/libneuropilot_jni.so
 vendor/lib/libnvram.so
 vendor/lib/libnvram_daemon_callback.so
 vendor/lib/libnvram_platform.so
@@ -1421,9 +1428,6 @@ vendor/lib64/libmt.so
 vendor/lib64/libmt@1.2.so
 vendor/lib64/libmtcloader.so
 vendor/lib64/libmtee.so
-vendor/lib64/libneuroeara.so
-vendor/lib64/libneuropilot_hal_utils.so
-vendor/lib64/libneuropilot_jni.so
 vendor/lib64/libnvram.so
 vendor/lib64/libnvram_daemon_callback.so
 vendor/lib64/libnvram_platform.so
