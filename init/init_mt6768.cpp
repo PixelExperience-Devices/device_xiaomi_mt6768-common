@@ -131,8 +131,8 @@ void vendor_load_properties()
         device = hwname.rfind("merlinnfc", 0) == 0 ? "merlinnfc" : "merlin";
     } else {
     //hey, it's shiva!
-    if (sys.totalram > 5072ull * 1024 * 1024) {
-        device = "lava";
+    if (sys.totalram > 5072ull * 1024 * 1024 && region != "CN") {
+        device = "shiva";
         model = "POCO M2";
         brand = "POCO";
         property_override("ro.build.description", "shiva-user 10 QP1A.190711.020 release-keys");
