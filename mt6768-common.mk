@@ -28,6 +28,10 @@ $(call inherit-product, vendor/mediatek/ims/mtk-ims.mk)
 # MTK-OSS
 $(call inherit-product, vendor/mediatek/opensource/mtk-builds.mk)
 
+# APNs
+PRODUCT_COPY_FILES += \
+    $(COMMON_PATH)/configs/apns-conf.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/apns-conf.xml
+
 # Audio
 PRODUCT_PACKAGES += \
     android.hardware.audio.effect@5.0-impl \
