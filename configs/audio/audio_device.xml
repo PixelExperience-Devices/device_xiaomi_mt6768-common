@@ -13,9 +13,9 @@
         <kctl name="ASP TX1 Source" value="DSPTX1" />
         <kctl name="ASP TX2 Source" value="DSPTX1" />
         <kctl name="ASPTX Ref" value="Ref" />
+        <kctl name="PCM Soft Ramp" value="4ms" />
         <kctl name="AMP Fast Use Case Delta File" value="fast_switch1.txt" />
         <kctl name="AMP Fast Use Case Switch Enable" value="0" />
-        <kctl name="PCM Soft Ramp" value="4ms" />
         <!--headphone output-->
         <path name="headphone_output" value="turnon">
             <kctl name="DAC In Mux" value="Normal Path" />
@@ -48,7 +48,7 @@
         </path>
        <!--speaker output-->
         <path name="speaker_output" value="turnon">
-            <!--<kctl name="PCM Source" value="DSP" />-->
+            <kctl name="PCM Source" value="DSP" />
             <kctl name="DAC In Mux" value="Normal Path" />
             <kctl name="LOL Mux" value="Playback" />
         </path>
@@ -67,13 +67,12 @@
         </path>
         <!--external_speaker output-->
         <path name="ext_speaker_output" value="turnon">
-        <!-- <kctl name="PCM Source" value="DSP" />-->
-         <kctl name="Ext_Speaker_Amp Switch" value="1" />
-     </path>
-     <path name="ext_speaker_output" value="turnoff">
-         <kctl name="Ext_Speaker_Amp Switch" value="0" />
-     </path>
-     <!--mic setting-->
+            <kctl name="Ext_Speaker_Amp Switch" value="1" />
+        </path>
+        <path name="ext_speaker_output" value="turnoff">
+            <kctl name="Ext_Speaker_Amp Switch" value="0" />
+        </path>
+        <!--mic setting-->
         <path name="builtin_Mic_Mic1" value="turnon">
             <kctl name="ADC L Mux" value="Left Preamplifier" />
             <kctl name="ADC R Mux" value="Right Preamplifier" />

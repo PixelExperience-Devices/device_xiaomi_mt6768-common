@@ -145,20 +145,6 @@ Only the three quirks included above are recognized at this point:
             <Limit name="concurrent-instances" max="16" />
             <Limit name="performance-point-1920x1088" value="30" />
         </MediaCodec>
-        <MediaCodec name="OMX.MTK.VIDEO.DECODER.DIVX" type="video/divx" >
-            <Limit name="size" min="16x16" max="1920x1088" />
-            <Quirk name="requires-allocate-on-input-ports" />
-            <Quirk name="requires-allocate-on-output-ports" />
-            <Limit name="concurrent-instances" max="16" />
-            <Limit name="performance-point-1920x1088" value="30" />
-        </MediaCodec>
-        <MediaCodec name="OMX.MTK.VIDEO.DECODER.DIVX3" type="video/divx3" >
-            <Limit name="size" min="16x16" max="1920x1088" />
-            <Quirk name="requires-allocate-on-input-ports" />
-            <Quirk name="requires-allocate-on-output-ports" />
-            <Limit name="concurrent-instances" max="16" />
-            <Limit name="performance-point-1920x1088" value="30" />
-        </MediaCodec>
         <MediaCodec name="OMX.MTK.VIDEO.DECODER.XVID" type="video/xvid" >
             <Limit name="size" min="16x16" max="1920x1088" />
             <Quirk name="requires-allocate-on-input-ports" />
@@ -206,8 +192,8 @@ Only the three quirks included above are recognized at this point:
             <Limit name="performance-point-1920x1088" value="30" />
         </MediaCodec>
         <MediaCodec name="OMX.MTK.VIDEO.ENCODER.HEVC" type="video/hevc" >
-            <Limit name="size" min="176x144" max="2400x1080" />
-            <Limit name="alignment" value="16x16" />
+            <Limit name="size" min="160x128" max="2400x1080" />
+            <Limit name="alignment" value="2x2" />
             <Limit name="block-size" value="16x16" />
             <Limit name="quality" range="0-100" default="50" />
             <Quirk name="requires-allocate-on-input-ports" />

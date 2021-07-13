@@ -18,8 +18,7 @@
     <!-- version section contains a “version” tag in the form “major.minor” e.g version=”1.0” -->
 
     <!-- Global configuration Decalaration -->
-    <globalConfiguration speaker_drc_enabled="false"/>
-
+    <globalConfiguration speaker_drc_enabled="false" call_screen_mode_supported="true"/>
 
     <!-- Modules section:
         There is one section per audio HW module present on the platform.
@@ -94,6 +93,16 @@
                     <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
                              samplingRates="8000,16000,32000,44100,48000"
                              channelMasks="AUDIO_CHANNEL_IN_MONO,AUDIO_CHANNEL_IN_STEREO,AUDIO_CHANNEL_IN_VOICE_UPLINK,AUDIO_CHANNEL_IN_VOICE_DNLINK"/>
+                </mixPort>
+                <mixPort name="voip_tx" role="sink" flags="AUDIO_INPUT_FLAG_VOIP_TX" maxOpenCount="1" maxActiveCount="1">
+                    <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
+                             samplingRates="8000,16000,32000,44100,48000"
+                             channelMasks="AUDIO_CHANNEL_IN_MONO,AUDIO_CHANNEL_IN_STEREO"/>
+                </mixPort>
+                <mixPort name="fast input" role="sink" flags="AUDIO_INPUT_FLAG_FAST" maxOpenCount="1" maxActiveCount="1">
+                    <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
+                             samplingRates="8000,16000,32000,44100,48000"
+                             channelMasks="AUDIO_CHANNEL_IN_MONO,AUDIO_CHANNEL_IN_STEREO"/>
                 </mixPort>
             </mixPorts>
             <devicePorts>
@@ -223,11 +232,11 @@
                 <route type="mix" sink="AUX Digital Out"
                        sources="primary output"/>
                 <route type="mix" sink="BT SCO"
-                       sources="primary output,voip_rx,Voice Call In"/>
+                       sources="primary output,deep_buffer,voip_rx,Voice Call In"/>
                 <route type="mix" sink="BT SCO Headset"
-                       sources="primary output,voip_rx,Voice Call In"/>
+                       sources="primary output,deep_buffer,voip_rx,Voice Call In"/>
                 <route type="mix" sink="BT SCO Car Kit"
-                       sources="primary output,voip_rx,Voice Call In"/>
+                       sources="primary output,deep_buffer,voip_rx,Voice Call In"/>
                 <route type="mix" sink="Analog Dock Headset"
                        sources="primary output"/>
                 <route type="mix" sink="Digital Dock Headset"
@@ -242,6 +251,10 @@
                        sources="Voice Call In"/>
                 <route type="mix" sink="FM Tuner input"
                        sources="FM Tuner In,Echo Ref In"/>
+                <route type="mix" sink="voip_tx"
+                       sources="Built-In Mic,Built-In Back Mic,Wired Headset Mic,BT SCO Headset Mic,AUX Digital In,USB Primary In"/>
+                <route type="mix" sink="fast input"
+                       sources="Built-In Mic,Built-In Back Mic,Wired Headset Mic,BT SCO Headset Mic,AUX Digital In,USB Primary In"/>
             </routes>
 
         </module>
