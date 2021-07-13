@@ -1,19 +1,16 @@
 # MTK project .rc configure
-import /vendor/odm/etc/${ro.boot.product.hardware.sku}/vendor.nxp.hardware.nfc@1.2-service.rc
+import /vendor/odm/etc/${ro.boot.product.hardware.sku}/vendor.nxp.hardware.nfc@2.0-service.rc
+import /vendor/odm/etc/${ro.boot.product.hardware.sku}/android.hardware.nfc@1.0-service.rc
 import /vendor/odm/etc/${ro.boot.product.hardware.sku}/vendor.microtrust.hardware.se@1.0-service.rc
-import /vendor/odm/etc/${ro.boot.product.hardware.sku}/android.hardware.secure_element@1.0-service-mediatek.rc
 
 on init
     mkdir /mnt/media_rw/usbotg 0700 media_rw media_rw
     mkdir /storage/usbotg 0700 root root
 
-on fs
-   mkdir /mnt/vendor/persist/stability 0755 system system
-   mkdir /mnt/vendor/persist/misys 0755 system system
-
 on post-fs-data
 mkdir /data/vendor/nfc 0770 nfc nfc
 mkdir /data/vendor/secure_element 0770 nfc nfc
+
 #Camera
     chmod 0660 /dev/MAINAF
     chown system camera /dev/MAINAF
@@ -76,10 +73,12 @@ mkdir /data/vendor/secure_element 0770 nfc nfc
     chmod 0777 /data/vendor/camera/model/bokeh_model/model_mdl_cache
     copy /vendor/etc/camera/model/bokeh_model/segment_model /data/vendor/camera/model/bokeh_model/segment_model
     chmod 0777 /data/vendor/camera/model/bokeh_model/segment_model
+
 #XIAOMI_WATERMARK
     mkdir /vendor/etc/camera 0777 system camera
 
 #DUAL_CAM
+    mkdir /mnt/vendor/persist/camera 0777 system camera
     chown system system /mnt/vendor/persist/camera/mi_calib_2k_output.bin
     chmod 0777 /mnt/vendor/persist/camera/mi_calib_2k_output.bin
     chown system system /mnt/vendor/persist/camera/rear_dc_cal_wd.bin
@@ -99,13 +98,20 @@ service fuse_usbotg /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/
     class late_start
     disabled
 
-
 service mmc_ffu /vendor/bin/mmc_ffu do /vendor/bin/emmc.bin /dev/block/mmcblk0 15 03 00
 	class main
 	user root
 	group system
 	oneshot
 
+service service_nv_protect /vendor/bin/misc_writer --nv_protect
+    disabled
+    oneshot
+
+on property:ctl.vendor.service_nv_protect=start
+    start service_nv_protect
+
 on boot
     setprop vendor.debug.camera.enableMetaPending 0
     setprop vendor.debug.camera.enableMetaMerge 0
+

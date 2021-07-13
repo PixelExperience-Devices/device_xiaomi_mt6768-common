@@ -6,9 +6,10 @@
 import /system/etc/init/hw/vendor_init_as_system.rc
 import /init.environ.rc
 import /system/etc/init/update_verifier.rc
-import /vendor/etc/init/android.hardware.boot@1.0-service.rc
+import /vendor/etc/init/android.hardware.boot@1.1-service.rc
+import /vendor/etc/init/android.hardware.boot@1.1-service-lazy.rc
 import /vendor/etc/init/trustonic.rc
-import ${ro.vendor.rc}meta_init.connectivity.rc
+import vendor/etc/init/hw/meta_init.connectivity.rc
 import /vendor/etc/init/hw/meta_init.project.rc
 import /vendor/etc/init/microtrust.rc
 #copy from system/etc for APEX
@@ -25,8 +26,10 @@ import /vendor/etc/init/microtrust.bp_kmsetkey_ca.rc
 import /vendor/etc/init/vendor.microtrust.hardware.thh@2.0-service.rc
 import /vendor/etc/init/microtrust.init_thh.rc
 ##microtrust end
+import vendor/etc/init/hw/multi_init.rc
+
 #Make sure meta_init.modem.rc is the last rc file.
-import ${ro.vendor.rc}meta_init.modem.rc
+import vendor/etc/init/hw/meta_init.modem.rc
 
 
 on early-init
@@ -43,6 +46,20 @@ on early-init
 
     # Set the security context of /postinstall if present.
     restorecon /postinstall
+
+
+    # Set up linker config subdirectories based on mount namespaces
+    mkdir /linkerconfig/bootstrap 0755
+    mkdir /linkerconfig/default 0755
+
+    # Generate ld.config.txt for early executed processes
+    exec -- /system/bin/linkerconfig --target /linkerconfig/bootstrap
+    chmod 644 /linkerconfig/bootstrap/ld.config.txt
+    copy /linkerconfig/bootstrap/ld.config.txt /linkerconfig/default/ld.config.txt
+    chmod 644 /linkerconfig/default/ld.config.txt
+
+    # Mount bootstrap linker configuration as current
+    mount none /linkerconfig/bootstrap /linkerconfig bind rec
 
     start ueventd
 
@@ -61,10 +78,6 @@ on init
     write /proc/bootprof "INIT:init"
 
     sysclktz 0
-
-    start servicemanager
-    start hwservicemanager
-    start hidl_memory
 
     # Mix device-specific information into the entropy pool
     copy /proc/cmdline /dev/urandom
@@ -121,6 +134,16 @@ on init
     chmod 0664 /dev/stune/top-app/tasks
     chmod 0664 /dev/stune/rt/tasks
 
+    # Permissions for System Server and daemons.
+    chown system system /sys/power/autosleep
+    chown system system /sys/power/state
+    chown system system /sys/power/wakeup_count
+    chown radio wakelock /sys/power/wake_lock
+    chown radio wakelock /sys/power/wake_unlock
+    chmod 0660 /sys/power/state
+    chmod 0660 /sys/power/wake_lock
+    chmod 0660 /sys/power/wake_unlock
+
     restorecon_recursive /mnt
     # Support legacy paths
     symlink /sdcard /mnt/sdcard
@@ -128,6 +151,22 @@ on init
     mount configfs none /config nodev noexec nosuid
     chmod 0770 /config/sdcardfs
     chown system package_info /config/sdcardfs
+
+    # Mount binderfs
+    mkdir /dev/binderfs
+    mount binder binder /dev/binderfs stats=global
+    chmod 0755 /dev/binderfs
+
+    # Mount fusectl
+    mount fusectl none /sys/fs/fuse/connections
+
+    symlink /dev/binderfs/binder /dev/binder
+    symlink /dev/binderfs/hwbinder /dev/hwbinder
+    symlink /dev/binderfs/vndbinder /dev/vndbinder
+
+    chmod 0666 /dev/binderfs/hwbinder
+    chmod 0666 /dev/binderfs/binder
+    chmod 0666 /dev/binderfs/vndbinder
 
     mkdir /mnt/secure 0700 root root
     mkdir /mnt/secure/asec  0700 root root
@@ -206,6 +245,9 @@ on init
     # set RLIMIT_NICE to allow priorities from 19 to -20
     setrlimit nice 40 40
 
+    start servicemanager
+    start hwservicemanager
+    start hidl_memory
 
 # Healthd can trigger a full boot from charger mode by signaling this
 # property when the power button is held.
@@ -300,9 +342,8 @@ on fs
     write /proc/bootprof "INIT:fs"
 #INTERNAL_START
     write /proc/bootprof "INIT:Mount_START"
-    wait_for_prop hwservicemanager.ready "true"
-    start vendor.boot-hal-1-0
-    mount_all /vendor/etc/fstab.mt6768 ${ro.vendor.rc}multi_init.rc
+    start vendor.boot-hal-1-1
+    mount_all /vendor/etc/fstab.mt6768 --early
     write /proc/bootprof "INIT:Mount_END"
 #INTERNAL_END
 
@@ -311,7 +352,8 @@ on post-fs
     start logd
     start keyinstall-1-0
     start light-hal-2-0
-    start vendor.boot-hal-1-0
+    start system_suspend
+    start vendor.boot-hal-1-1
     start merged_hal_service
     # Once everything is setup, no need to modify /.
     # The bind+ro combination avoids modifying any other mount flags.
@@ -369,12 +411,15 @@ on post-fs
 #INTERNAL_END
 
 on late-fs
+    wait_for_prop hwservicemanager.ready "true"
     start vendor.keymaster-3-0
     start vendor.keymaster-3-0-trustonic
     start vendor.keymaster-4-0
     start vendor.keymaster-4-0-trustonic
     start vendor.keymaster-4-0-beanpod
     start keymaster_attestation-1-1
+    exec_start wait_for_keymaster
+    mount_all /vendor/etc/fstab.mt6768 --late
 
 on post-fs-data
     write /proc/bootprof "INIT:post-fs-data"
@@ -450,7 +495,7 @@ on boot
     chown system radio /dev/ttyGS3
     chmod 0660 /dev/ttyGS3
     setprop sys.usb.configfs 1
-	setprop sys.usb.ffs.aio_compat 1
+	setprop sys.usb.ffs.aio_compat 0
 
 on nonencrypted
     class_start main
@@ -544,14 +589,15 @@ on property:ro.debuggable=1
     start console
 
 # adbd is controlled via property triggers in init.<platform>.usb.rc
-service adbd /system/bin/adbd --root_seclabel=u:r:su:s0
+service adbd /apex/com.android.adbd/bin/adbd --root_seclabel=u:r:su:s0
     class core
-    socket adbd stream 660 system system
+    socket adbd seqpacket 660 system system
     disabled
+    override
     seclabel u:r:adbd:s0
 
 #INTERNAL_START
-service emdlogger1 /system/bin/emdlogger1
+service emdlogger1 /system/system_ext/bin/emdlogger1
     class main
     user shell
     group system shell radio sdcard_rw inet sdcard_r media_rw
@@ -581,10 +627,13 @@ on property:ro.boot.usbconfig=0 && property:sys.usb.configfs=1
     write /proc/bootprof "INIT:start adbd"
     start adbd
 
+    # Generate linker config based on apex mounted in bootstrap namespace
+    update_linker_config
+
 on property:sys.usb.ffs.ready=1 && property:ro.boot.usbconfig=0 && property:sys.usb.configfs=1
     write /proc/bootprof "INIT:on property:ro.boot.usbconfig=0"
     write /config/usb_gadget/g1/UDC "none"
-    write /config/usb_gadget/g1/strings/0x409/serialnumber $ro.serialno
+    write /config/usb_gadget/g1/strings/0x409/serialnumber ${ro.serialno}
     write /config/usb_gadget/g1/configs/b.1/strings/0x409/configuration "adb_acm"
     write /config/usb_gadget/g1/idProduct 0x200E
     symlink /config/usb_gadget/g1/functions/ffs.adb /config/usb_gadget/g1/configs/b.1/f1
@@ -620,10 +669,13 @@ on property:ro.boot.usbconfig=3 && property:sys.usb.configfs=1
     write /proc/bootprof "INIT:start adbd"
     start adbd
 
+    # Generate linker config based on apex mounted in bootstrap namespace
+    update_linker_config
+
 on property:sys.usb.ffs.ready=1 && property:ro.boot.usbconfig=3 && property:sys.usb.configfs=1
     write /proc/bootprof "INIT:on property:ro.boot.usbconfig 3"
     write /config/usb_gadget/g1/UDC "none"
-    write /config/usb_gadget/g1/strings/0x409/serialnumber $ro.serialno
+    write /config/usb_gadget/g1/strings/0x409/serialnumber ${ro.serialno}
     write /config/usb_gadget/g1/configs/b.1/strings/0x409/configuration "meta_elt_adb"
     write /config/usb_gadget/g1/idProduct 0x2040
     write /sys/devices/platform/mt_usb/saving 1

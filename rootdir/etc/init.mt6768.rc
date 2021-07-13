@@ -66,6 +66,8 @@ on late-init
 # mount different fs start
 
 on charger
+    write /proc/perfmgr/boost_ctrl/cpu_ctrl/boot_freq "-1 -1 -1 -1"
+    write /sys/devices/platform/10012000.dvfsrc/helio-dvfsrc/dvfsrc_req_ddr_opp -1
 
     write /proc/hps/enabled 0
     write /sys/devices/system/cpu/cpu0/online 1
@@ -86,6 +88,7 @@ on charger
     mount ext4 /dev/block/platform/bootdevice/by-name/cache /cache rw wait
     chmod 0660 /dev/spm
     chown system system /dev/spm
+    start spm_script
     chmod 0666 /dev/kmsg
     chmod 0775 /mnt/vendor
     mkdir /mnt/vendor/nvcfg
@@ -106,6 +109,8 @@ on charger
     chmod 0660 /sys/power/wake_unlock
     chmod 0660 /sys/power/wakeup_count
     write /sys/power/pm_async 0
+    write /sys/power/pm_freeze_timeout 2000
+
     start fuelgauged
     start fuelgauged_nvram
 
@@ -121,16 +126,17 @@ on charger
     chown system system /sys/devices/platform/1100a000.spi0/spi_master/spi0/spi0.0/fts_rw_reg
     chmod 0660 /sys/devices/platform/1100a000.spi0/spi_master/spi0/spi0.0/fts_rw_reg
 
+    start vendor.light-default
     start mi_thermald
 
 on fs
+    start vendor.boot-hal-1-1
+
+    # mount fstab
     write /proc/bootprof "INIT:Mount_START"
-    write /sys/kernel/debug/tracing/trace_marker "B|1|Mount"
-    wait_for_prop hwservicemanager.ready "true"
+    write /sys/kernel/tracing/trace_marker "B|1|Mount"
     mount_all /vendor/etc/fstab.mt6768 --early
-    mount_all /vendor/etc/fstab.mt6768 --late
-    exec /bin/tune2fs -O has_journal -u 10010 -r 4096 /dev/block/platform/bootdevice/by-name/userdata
-    write /sys/kernel/debug/tracing/trace_marker "E"
+    write /sys/kernel/tracing/trace_marker "E"
     write /proc/bootprof "INIT:Mount_END"
     write /sys/block/zram0/comp_algorithm lz4
     write /proc/sys/vm/page-cluster 0
@@ -174,6 +180,21 @@ on post-fs
 
     chown system system /mnt/vendor/protect_s
     chmod 0770 /mnt/vendor/protect_s
+    
+    
+#tp ito
+    chown system system /proc/tp_selftest
+    chmod 0664 /proc/tp_selftest
+    
+    
+
+on late-fs
+    write /proc/bootprof "INIT:late-fs"
+    wait_for_prop hwservicemanager.ready "true"
+    exec_start wait_for_keymaster
+    setprop init.userspace_reboot.userdata_remount.timeoutmillis 10000
+    mount_all /vendor/etc/fstab.mt6768 --late
+    exec /system/bin/tune2fs -O has_journal -u 10010 -r 4096 /dev/block/platform/bootdevice/by-name/userdata
 
 on post-fs-data
     write /proc/bootprof "INIT:post-fs-data"
@@ -367,6 +388,8 @@ on post-fs-data
     chown mediacodec system /dev/video1
     mkdir /data/vendor/vcodec 0770 media system
     mkdir /data/vendor/vcodec/log 0770 media system
+    mkdir /data/vendor/vcodec/in 0770 media system
+    mkdir /data/vendor/vcodec/out 0770 media system
 
     #MJC
     #insmod /vendor/lib/modules_prebuilt/mjc_kernel_driver.ko
@@ -516,10 +539,6 @@ on post-fs-data
 
     #ITO
     chmod 0777 /data/local/tmp
-
-    #SAR
-    chmod 0777 /dev/sar
-
 
     #FM
     chmod 0777 /sys/class/fm/fm/lan_enable
@@ -684,10 +703,6 @@ on post-fs-data
     chmod 660 /dev/alarm
     chown root system /dev/alarm
 
-
-    #Create persist for camera calibration data
-    mkdir /mnt/vendor/persist/camera 0755 system system
-
 # End of adding by MTK drivers
 # -----------------------
 
@@ -734,7 +749,7 @@ on boot
     chmod 0660 /sys/devices/system/cpu/rq-stats/htasks_thresh
     chown system system /sys/devices/system/cpu/rq-stats/avg_htasks_thresh
     chmod 0660 /sys/devices/system/cpu/rq-stats/avg_htasks_thresh
-    chmod 0777 /dev/block/mmcblk0p37
+
     chown system /sys/module/mlog/parameters/do_mlog
     chown system /sys/module/mlog/parameters/timer_intval
 
@@ -748,20 +763,8 @@ on boot
     chown system system /sys/class/leds/green/trigger
     chown system system /sys/class/leds/blue/trigger
 
-    chown system system /sys/devices/virtual/huaqin/interface/hw_info/pcba_config
-    chmod 0664 /sys/devices/virtual/huaqin/interface/hw_info/pcba_config
-
-    chown system system /sys/devices/platform/bootdevice/mmc_host/mmc0/mmc0:0001/manfid
-    chmod 0664 /sys/devices/platform/bootdevice/mmc_host/mmc0/mmc0:0001/manfid
-
-    chown system system /sys/devices/platform/bootdevice/mmc_host/mmc0/mmc0:0001/hq_fw_version
-    chmod 0664 /sys/devices/platform/bootdevice/mmc_host/mmc0/mmc0:0001/hq_fw_version
-
-    chown system system /sys/devices/virtual/huaqin/interface/misc/emmc_size
-    chmod 0664 /sys/devices/virtual/huaqin/interface/misc/emmc_size
-
-    chown system system /sys/devices/virtual/huaqin/interface/misc/ram_size
-    chmod 0664 /sys/devices/virtual/huaqin/interface/misc/ram_size
+    chown system system /sys/devices/platform/11012000.spi2/spi_master/spi2/spi2.0/authen_fd/performance
+    chmod 0664 /sys/devices/platform/11012000.spi2/spi_master/spi2/spi2.0/authen_fd/performance
 
     # Permission for hibernation
     chown radio system /sys/power/tuxonice
@@ -782,8 +785,6 @@ on boot
     chown root root /dev/graphics/fb0
     chmod 0666 /dev/graphics/fb0
 
-    chown root system /sys/class/huaqin/interface/hw_info/lcm
-    chmod 0666 /sys/class/huaqin/interface/hw_info/lcm
     chown root system /sys/class/huaqin/interface/hw_info/main0_cam
     chmod 0666 /sys/class/huaqin/interface/hw_info/main0_cam
     chown root system /sys/class/huaqin/interface/hw_info/main1_cam
@@ -794,8 +795,6 @@ on boot
     chmod 0666 /sys/class/huaqin/interface/hw_info/main3_cam
     chown root system /sys/class/huaqin/interface/hw_info/sub_cam
     chmod 0666 /sys/class/huaqin/interface/hw_info/sub_cam
-    chown root system /sys/class/huaqin/interface/hw_info/ctp
-    chmod 0666 /sys/class/huaqin/interface/hw_info/ctp
 # Smartbook Handler Framework
     chown system system /sys/power/sb_state
     chmod 0660 /sys/power/sb_state
@@ -936,18 +935,10 @@ on boot
 
     chown system system /sys/class/thermal/thermal_message/sconfig
 
-# Set enableflags for boot Systrace
-on early-init && property:ro.boot.boot_trace=1
-    setprop debug.atrace.tags.enableflags 0x1fffffe
-
 # Stop bootprof
 on property:sys.boot_completed=1
-    write /proc/bootprof "0"
-    write /proc/mtprintk ${persist.vendor.uartconsole.enable}
-
-## mtk printk uart controller
-on property:persist.vendor.uartconsole.enable=*
-    write /proc/mtprintk ${persist.vendor.uartconsole.enable}
+#Power Manager
+    write /sys/power/pm_freeze_timeout 2000
 
 # end boot time fs tune
 on property:sys.boot_completed=1
@@ -1051,12 +1042,6 @@ service meta_tst /vendor/bin/meta_tst
     disabled
     oneshot
 
-# reset mdmode when modem crash happens in ATM
-on property:vendor.mtk.md1.status=reset
-    setprop persist.vendor.atm.mdmode normal
-
-on init
-    symlink /dev/block/platform/bootdevice /dev/block/bootdevice
 
 service initprop_bin /system/vendor/bin/initprop_bin
     class main
@@ -1069,9 +1054,11 @@ on property:vendor.service.nvram_init=Ready
 
 on property:persist.odm.ril.oem.sno=*
     setprop ro.ril.oem.sno ${persist.odm.ril.oem.sno}
+    setprop ro.ril.miui.sno ${persist.odm.ril.oem.sno}
 
 on property:persist.odm.ril.oem.psno=*
     setprop ro.ril.oem.psno ${persist.odm.ril.oem.psno}
+    setprop ro.ril.miui.psno ${persist.odm.ril.oem.psno}
 
 on property:persist.odm.ril.oem.wifimac=*
     setprop ro.ril.oem.wifimac ${persist.odm.ril.oem.wifimac}
@@ -1153,6 +1140,8 @@ service disablefreqhop /system/vendor/bin/factory_bin c 0
     oneshot
     disabled
 
+on init
+    symlink /dev/block/platform/bootdevice /dev/block/bootdevice
 service enableswtp /system/vendor/bin/factory_bin z 1
     class main
     user root
@@ -1194,14 +1183,6 @@ service mi_thermald /vendor/bin/mi_thermald
     user root
     group system
     seclabel u:r:mi_thermald:s0
-
-service MeidService /system/bin/MeidService.sh
-    class late_start
-    user root
-    group root
-    disabled
-    oneshot
-    seclabel u:r:shell:s0
     
 service charger /bin/charger
     class charger
@@ -1209,9 +1190,6 @@ service charger /bin/charger
     group system graphics input
     capabilities SYS_BOOT
     seclabel u:r:charger:s0    
-
-on property:persist.sys.start.meidservice=1
-    start MeidService
 
 on property:odm.audio.typec.status=*
     setprop vendor.audio.typec.status ${odm.audio.typec.status}
