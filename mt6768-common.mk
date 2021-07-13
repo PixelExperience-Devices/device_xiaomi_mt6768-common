@@ -28,10 +28,14 @@ PRODUCT_COPY_FILES += \
 
 # Audio
 PRODUCT_PACKAGES += \
-    android.hardware.audio.effect@5.0-impl \
+    android.hardware.audio.effect@6.0-impl \
     android.hardware.audio.common@6.0-util \
     android.hardware.bluetooth.audio@2.0-impl \
     audio.a2dp.default \
+    audio.bluetooth.default \
+    audio.r_submix.default \
+    audio.usb.default \
+    audio_policy.stub \
     libaudiopreprocessing \
     libbundlewrapper \
     libdownmix \
@@ -40,8 +44,12 @@ PRODUCT_PACKAGES += \
     libldnhncr \
     libreverbwrapper \
     libvisualizer \
+    libtinycompress \
     libalsautils \
-    libnbaio_mono
+    libnbaio_mono \
+    libaudiofoundation \
+    libaudiofoundation.vendor \
+    libtinycompress.vendor
 
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/audio/audio_device.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_device.xml \
@@ -67,13 +75,11 @@ PRODUCT_PACKAGES += \
     
 # Display
 PRODUCT_PACKAGES += \
-    android.hardware.graphics.allocator@2.0-impl \
-    android.hardware.graphics.allocator@2.0-service \
     android.hardware.graphics.composer@2.1-impl \
     android.hardware.graphics.composer@2.1-service \
-    android.hardware.graphics.mapper@2.0-impl-2.1 \
     android.hardware.memtrack@1.0-impl \
     android.hardware.memtrack@1.0-service \
+    libdrm.vendor \
     libvulkan
 
 # DRM
@@ -112,6 +118,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_audio.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video_le.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_video_le.xml
+
+# Net
+PRODUCT_PACKAGES += \
+    libpcap.vendor
     
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -178,6 +188,11 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     libsensorndkbridge
 
+# Thermal
+PRODUCT_PACKAGES += \
+    android.hardware.thermal@1.0-impl \
+    android.hardware.thermal@2.0-impl
+
 # TinyXML
 PRODUCT_PACKAGES += \
     libtinyxml
@@ -185,11 +200,6 @@ PRODUCT_PACKAGES += \
 # Text classifier
 PRODUCT_PACKAGES += \
     libtextclassifier_hash.vendor
-
-# Vibrator
-PRODUCT_PACKAGES += \
-    android.hardware.vibrator@1.0-impl \
-    android.hardware.vibrator@1.0-service
                                 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += $(COMMON_PATH)
