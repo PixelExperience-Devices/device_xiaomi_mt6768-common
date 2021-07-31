@@ -32,3 +32,6 @@ persist.sys.recovery_update  u:object_r:persist_recovery_update_prop:s0
 
 # Thermal
 vendor.sys.thermal.     u:object_r:thermal_engine_prop:s0
+
+persist.vendor.usb.config              u:object_r:vendor_usb_config_prop:s0
+vendor.usb.config                      u:object_r:vendor_usb_config_prop:s0

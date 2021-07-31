@@ -1,6 +1,0 @@
-allow hal_usb_default hal_usb_gadget_hwservice:hwservice_manager { add find };
-allow hal_usb_default configfs:dir rw_dir_perms;
-allow hal_usb_default configfs:file create_file_perms;
-allow hal_usb_default configfs:lnk_file create_file_perms;
-allow hal_usb_default configfs:dir create_dir_perms;
-allow hal_usb_default functionfs:dir rw_dir_perms;
