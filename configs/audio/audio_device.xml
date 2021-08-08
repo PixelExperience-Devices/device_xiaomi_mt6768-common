@@ -48,7 +48,6 @@
         </path>
        <!--speaker output-->
         <path name="speaker_output" value="turnon">
-            <kctl name="PCM Source" value="DSP" />
             <kctl name="DAC In Mux" value="Normal Path" />
             <kctl name="LOL Mux" value="Playback" />
         </path>
