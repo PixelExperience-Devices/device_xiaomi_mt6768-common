@@ -136,7 +136,6 @@ void vendor_load_properties()
         model = "POCO M2";
         brand = "POCO";
         property_override("ro.build.description", "shiva-user 10 QP1A.190711.020 release-keys");
-        property_override_triple("ro.build.fingerprint", "ro.system.build.fingerprint", "ro.vendor.build.fingerprint", "POCO/shiva/shiva:10/QP1A.190711.020/V12.0.1.0.QJCINXM:user/release-keys");
     } else if (hwname == "galahad") {
         device = "galahad";
         model = "Redmi 9";
