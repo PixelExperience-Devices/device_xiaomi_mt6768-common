@@ -25,9 +25,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 # IMS
 $(call inherit-product, vendor/mediatek/ims/mtk-ims.mk)
 
-# MTK-OSS
-$(call inherit-product, vendor/mediatek/opensource/mtk-builds.mk)
-
 # APNs
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/apns-conf.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/apns-conf.xml
@@ -65,6 +62,13 @@ PRODUCT_COPY_FILES += \
     frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/r_submix_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/usb_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/default_volume_tables.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default_volume_tables.xml
+
+# Audio
+PRODUCT_PACKAGES += \
+    libaudioprimarydevicehalifclient \
+    vendor.mediatek.hardware.audio@5.1 \
+    android.hardware.audio@5.0-impl-mediatek \
+    android.hardware.audio@5.0-service-mediatek
 
 # Bluetooth
 PRODUCT_PACKAGES += \
