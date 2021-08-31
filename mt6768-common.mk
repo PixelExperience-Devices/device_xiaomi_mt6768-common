@@ -22,9 +22,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
 # Enable updating of APEXes
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
-# IMS
-$(call inherit-product, vendor/mediatek/ims/mtk-ims.mk)
-
 # APNs
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/apns-conf.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/apns-conf.xml
