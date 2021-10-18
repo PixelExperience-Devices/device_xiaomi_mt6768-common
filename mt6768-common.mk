@@ -101,6 +101,10 @@ PRODUCT_PACKAGES += \
     android.hardware.camera.device@3.6 \
     android.hardware.camera.device@3.6.vendor
     
+# Disable Configstore
+PRODUCT_PACKAGES += \
+    disable_configstore
+
 # Display
 PRODUCT_PACKAGES += \
     android.hardware.graphics.composer@2.1-impl \
