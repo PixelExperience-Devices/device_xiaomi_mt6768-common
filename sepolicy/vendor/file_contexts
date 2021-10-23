@@ -10,6 +10,9 @@
 # FPS Info
 /sys/module/primary_display/parameters/display_framerate_main      u:object_r:sysfs_fpsinfo:s0
 
+# Same Process HAL
+/(vendor|system/vendor)/lib(64)?/libunwindstack-v30\.so  u:object_r:same_process_hal_file:s0
+
 # Hals
 /vendor/bin/hw/vendor\.xiaomi\.hardware\.displayfeature@1\.0-service    u:object_r:hal_displayfeature_default_exec:s0
 /vendor/bin/hw/vendor\.xiaomi\.hardware\.citsensorservice@1\.1-service  u:object_r:hal_citsensorservice_default_exec:s0
