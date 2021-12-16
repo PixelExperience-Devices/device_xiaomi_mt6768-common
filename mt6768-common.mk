@@ -83,28 +83,19 @@ PRODUCT_PACKAGES += \
     libldacBT_dec \
     libbtconfigstore \
     libbluetooth_audio_session.vendor \
-    android.hardware.bluetooth.a2dp@1.0 \
     android.hardware.bluetooth@1.0.vendor \
     android.hardware.bluetooth.a2dp@1.0.vendor
 
 # Camera
 PRODUCT_PACKAGES += \
     Snap \
-    android.hardware.camera.provider@2.4 \
     android.hardware.camera.provider@2.4.vendor \
-    android.hardware.camera.provider@2.5 \
     android.hardware.camera.provider@2.5.vendor \
-    android.hardware.camera.provider@2.6 \
     android.hardware.camera.provider@2.6.vendor \
-    android.hardware.camera.device@3.2 \
     android.hardware.camera.device@3.2.vendor \
-    android.hardware.camera.device@3.3 \
     android.hardware.camera.device@3.3.vendor \
-    android.hardware.camera.device@3.4 \
     android.hardware.camera.device@3.4.vendor \
-    android.hardware.camera.device@3.5 \
     android.hardware.camera.device@3.5.vendor \
-    android.hardware.camera.device@3.6 \
     android.hardware.camera.device@3.6.vendor
     
 # Disable Configstore
@@ -125,13 +116,9 @@ PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-impl:64 \
     android.hardware.drm@1.0-service-lazy \
     android.hardware.drm@1.3-service.clearkey \
-    android.hardware.drm@1.0 \
     android.hardware.drm@1.0.vendor \
-    android.hardware.drm@1.1 \
     android.hardware.drm@1.1.vendor \
-    android.hardware.drm@1.2 \
     android.hardware.drm@1.2.vendor \
-    android.hardware.drm@1.3 \
     android.hardware.drm@1.3.vendor
 
 # DT2W
@@ -149,14 +136,11 @@ PRODUCT_PACKAGES += \
 
 # GPS
 PRODUCT_PACKAGES += \
-    android.hardware.gnss@2.0 \
     android.hardware.gnss@2.0.vendor \
-    android.hardware.gnss@2.1 \
     android.hardware.gnss@2.1.vendor
 
 # Health
 PRODUCT_PACKAGES += \
-    android.hardware.health@2.0 \
     android.hardware.health@2.1-impl \
     android.hardware.health@2.1-impl.recovery \
     android.hardware.health@2.1-service
@@ -242,40 +226,23 @@ PRODUCT_COPY_FILES += \
 
 # Power
 PRODUCT_PACKAGES += \
-    android.hardware.power@1.0 \
     android.hardware.power@1.0.vendor \
-    android.hardware.power@1.1 \
     android.hardware.power@1.1.vendor \
-    android.hardware.power@1.2 \
     android.hardware.power@1.2.vendor \
-    android.hardware.power@1.3 \
     android.hardware.power@1.3.vendor \
-    android.hardware.power-V1-ndk_platform \
     android.hardware.power-V1-ndk_platform.vendor
 
 # Radio
 PRODUCT_PACKAGES += \
-    android.hardware.broadcastradio@1.0 \
-    android.hardware.broadcastradio@1.1 \
-    android.hardware.radio@1.0 \
     android.hardware.radio@1.0.vendor \
-    android.hardware.radio@1.1 \
     android.hardware.radio@1.1.vendor \
-    android.hardware.radio@1.2 \
     android.hardware.radio@1.2.vendor \
-    android.hardware.radio@1.3 \
     android.hardware.radio@1.3.vendor \
-    android.hardware.radio@1.4 \
     android.hardware.radio@1.4.vendor \
-    android.hardware.radio@1.5 \
     android.hardware.radio@1.5.vendor \
-    android.hardware.radio.config@1.0 \
     android.hardware.radio.config@1.0.vendor \
-    android.hardware.radio.config@1.1 \
     android.hardware.radio.config@1.1.vendor \
-    android.hardware.radio.config@1.2 \
     android.hardware.radio.config@1.2.vendor \
-    android.hardware.radio.deprecated@1.0 \
     android.hardware.radio.deprecated@1.0.vendor
     
 # RenderScript
@@ -296,7 +263,6 @@ PRODUCT_COPY_FILES += \
 # Sensors
 PRODUCT_PACKAGES += \
     libsensorndkbridge \
-    android.hardware.sensors@2.0 \
     android.hardware.sensors@2.0.vendor
 
 # Symbols
@@ -307,7 +273,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.thermal@1.0-impl \
     android.hardware.thermal@2.0-impl \
-    android.hardware.thermal@2.0 \
     android.hardware.thermal@2.0.vendor
 
 # TinyXML
@@ -415,36 +380,22 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     WifiOverlay \
     TetheringConfigOverlay \
-    android.hardware.wifi@1.0 \
     android.hardware.wifi@1.0.vendor \
-    android.hardware.wifi@1.1 \
     android.hardware.wifi@1.1.vendor \
-    android.hardware.wifi@1.2 \
     android.hardware.wifi@1.2.vendor \
-    android.hardware.wifi@1.3 \
     android.hardware.wifi@1.3.vendor \
-    android.hardware.wifi@1.4 \
     android.hardware.wifi@1.4.vendor \
-    android.hardware.wifi.supplicant@1.0 \
     android.hardware.wifi.supplicant@1.0.vendor \
-    android.hardware.wifi.supplicant@1.1 \
     android.hardware.wifi.supplicant@1.1.vendor \
-    android.hardware.wifi.supplicant@1.2 \
     android.hardware.wifi.supplicant@1.2.vendor \
-    android.hardware.wifi.supplicant@1.3 \
     android.hardware.wifi.supplicant@1.3.vendor \
-    android.hardware.wifi.hostapd@1.0 \
     android.hardware.wifi.hostapd@1.0.vendor \
-    android.hardware.wifi.hostapd@1.1 \
     android.hardware.wifi.hostapd@1.1.vendor \
-    android.hardware.wifi.hostapd@1.2 \
     android.hardware.wifi.hostapd@1.2.vendor
 
 # USB
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.1-service.mt6768 \
     android.hardware.usb.gadget@1.1-service.mt6768 \
-    android.hardware.usb@1.0 \
     android.hardware.usb@1.0.vendor \
-    android.hardware.usb@1.1 \
     android.hardware.usb@1.1.vendor
