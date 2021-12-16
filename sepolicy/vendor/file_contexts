@@ -16,7 +16,7 @@
 /vendor/bin/hw/vendor\.xiaomi\.hardware\.citsensorservice@1\.1-service  u:object_r:hal_citsensorservice_default_exec:s0
 
 # Light
-/vendor/bin/hw/android\.hardware\.light@2\.0-service\.mt6768      u:object_r:hal_light_default_exec:s0
+/vendor/bin/hw/android\.hardware\.light-service\.mt6768      u:object_r:hal_light_default_exec:s0
 
 # USB
 /vendor/bin/hw/android\.hardware\.usb@1\.1-service\.mt6768      u:object_r:hal_usb_impl_exec:s0

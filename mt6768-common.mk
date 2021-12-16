@@ -351,7 +351,7 @@ PRODUCT_PACKAGES += \
     
 # Light
 PRODUCT_PACKAGES += \
-    android.hardware.light@2.0-service.mt6768
+    android.hardware.light-service.mt6768
 
 # RcsService
 PRODUCT_PACKAGES += \
