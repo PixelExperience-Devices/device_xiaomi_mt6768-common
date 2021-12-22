@@ -1,11 +1,5 @@
 # Camera
-persist.vendor.camera.privapp.list    u:object_r:exported_default_prop:s0
-persist.vendor.camera.mi.             u:object_r:vendor_mi_camera_prop:s0
-
-# Display
-ro.vendor.histogram.enable               u:object_r:vendor_displayfeature_prop:s0
-ro.vendor.whitepoint_calibration_enable  u:object_r:vendor_displayfeature_prop:s0
-ro.vendor.xiaomi.bl.poll                 u:object_r:vendor_displayfeature_prop:s0
+persist.vendor.camera.mi.                        u:object_r:vendor_camera_prop:s0
 
 # Fingerprint
 fpc_kpi                    u:object_r:vendor_fp_prop:s0
@@ -22,11 +16,8 @@ ro.boot.fpsensor           u:object_r:vendor_fp_prop:s0
 ro.hardware.fp.            u:object_r:vendor_fp_prop:s0
 ro.boot.fpsensor.          u:object_r:vendor_fp_prop:s0
 
-# Recovery
-persist.sys.recovery_update  u:object_r:persist_recovery_update_prop:s0
-
 # Thermal
-vendor.sys.thermal.     u:object_r:thermal_engine_prop:s0
+vendor.sys.thermal.                              u:object_r:thermal_engine_prop:s0
 
 persist.vendor.usb.config              u:object_r:vendor_usb_config_prop:s0
 vendor.usb.config                      u:object_r:vendor_usb_config_prop:s0
