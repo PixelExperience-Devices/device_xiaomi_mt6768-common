@@ -23,7 +23,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
 # Get non-open-source specific aspects
-$(call inherit-product, vendor/mediatek-ims/ims-vendor.mk)
+$(call inherit-product, vendor/xiaomi/mt6768-ims/mt6768-ims-vendor.mk)
 
 # APEX
 OVERRIDE_PRODUCT_COMPRESSED_APEX := false
