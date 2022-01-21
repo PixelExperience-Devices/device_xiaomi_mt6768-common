@@ -442,4 +442,5 @@ persist.dbg.vt_avail_ovr=1
 persist.dbg.wfc_avail_ovr=1
 debug.hwui.use_hint_manager=true
 debug.hwui.target_cpu_time_percent=30
+debug.renderengine.backend=skiaglthreaded
 import /vendor/build_${ro.boot.radio.multisim.config}_vendor.prop
