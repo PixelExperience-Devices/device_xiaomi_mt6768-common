@@ -420,7 +420,6 @@ persist.log.tag.MAPI-CommandProcessor=S
 ro.surface_flinger.primary_display_orientation=0
 ro.vendor.pref_scale_enable_cfg=1
 persist.vendor.md_c2k_cap_dep_check=0
-ro.apex.updatable=true
 ro.hardware.nfc_nci=nqx.default
 ro.vendor.se.type=HCE,UICC
 ro.vendor.mtk_uicc_clf=1
