@@ -16,8 +16,8 @@
 
 COMMON_PATH := device/xiaomi/mt6768-common
 
-# Installs gsi keys into ramdisk, to boot a GSI with verified boot.
-$(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
+# Include Dev GSI Keys
+$(call inherit-product, $(SRC_TARGET_DIR)/product/developer_gsi_keys.mk)
 
 # Get non-open-source specific aspects
 $(call inherit-product, vendor/xiaomi/mt6768-ims/mt6768-ims-vendor.mk)
