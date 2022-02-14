@@ -365,7 +365,6 @@ vendor.mtk.vdec.waitkeyframeforplay=9
 persist.sys.sf.color_saturation=1.1
 persist.sys.sf.native_mode=0
 ro.vendor.mtk_embms_support=1
-debug.sf.disable_backpressure=1
 persist.log.tag.libPowerHal=S
 persist.log.tag.GED=S
 persist.log.tag.hwcomposer=S
