@@ -160,6 +160,8 @@ ro.mtk_perf_simple_start_win=1
 sys.ipo.pwrdncap=2
 
 # Radio
+persist.radio.multisim.config=dsds
+persist.vendor.radio.msimmode=dsds
 persist.vendor.radio.fd.counter=150
 persist.vendor.radio.fd.off.counter=50
 persist.vendor.radio.fd.r8.counter=150
@@ -174,15 +176,18 @@ persist.vendor.radio.mtk_ps3_rat=G
 persist.vendor.radio.smart.data.switch=1
 ro.vendor.mtk_protocol1_rat_config=C/Lf/Lt/W/T/G
 ro.telephony.default_network=10,10,10,10
+ro.telephony.sim.count=2
 ro.vendor.mtk_md1_support=12
 ro.vendor.mtk_c2k_lte_mode=2
 ro.vendor.mtk_eccci_c2k=1
 ro.vendor.mtk_ps1_rat=C/Lf/Lt/W/T/G
 ro.vendor.mtk_lte_support=1
 ro.vendor.mtk_c2k_support=1
+telephony.active_modems.max_count=2
 telephony.lteOnCdmaDevice=1
 ro.vendor.mtk_ril_mode=c6m_1rild
 ro.vendor.md_prop_ver=1
+ro.vendor.radio.max.multisim=dsds
 import /vendor/build_${ro.boot.radio.multisim.config}_vendor.prop
 
 # SurfaceFlinger
