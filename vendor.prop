@@ -2,7 +2,13 @@
 persist.adb.nonblocking_ffs=1
 
 # Audio
+audio_para_version=J15S-Audiopara-V13-20220623
+ro.vendor.audio.voice.volume.boost=manual
+persist.vendor.audio.button_jack.profile=volume
+persist.vendor.audio.button_jack.switch=0
+ro.vendor.audio.sos=true
 ro.vendor.audio.game.effect=false
+ro.audio.usb.period_us=5000
 ro.vendor.mtk_audio_alac_support=1
 ro.vendor.mtk_audio_tuning_tool_ver=V2.2
 ro.vendor.mtk_audio_ape_support=1
@@ -12,7 +18,9 @@ ro.config.vc_call_vol_steps=7
 # Camera
 vendor.camera.mdp.cz.enable=1
 ro.vendor.camera3.zsl.default=140
+ro.vendor.camera.isp.support.colorspace=0
 vendor.camera.mdp.dre.enable=0
+persist.camera.dualcal.state=-1
 persist.vendor.camera3.pipeline.bufnum.min.high_ram.imgo=7
 persist.vendor.camera3.pipeline.bufnum.min.low_ram.imgo=6
 persist.vendor.camera3.pipeline.bufnum.base.imgo=4
@@ -39,10 +47,16 @@ persist.vendor.connsys.dynamic.dump=0
 vendor.connsys.driver.ready=no
 persist.vendor.connsys.fm_chipid=mt6631
 persist.vendor.connsys.fm_short_antenna_support=1
+ro.hardware.wlan.dbs=0
 ro.vendor.connsys.dedicated.log=1
 ro.vendor.wlan.gen=gen4m
+ro.vendor.wlan.chrdev=wmt_chrdev_wifi
+ro.vendor.bt.platform=connac1x
 ro.vendor.wifi.sap.interface=ap0
-wifi.concurrent.interface=ap0
+ro.vendor.wifi.sap.concurrent.iface=ap1
+
+# Consumerir
+ro.hardware.consumerir=common
 
 # Crypto
 ro.crypto.volume.filenames_mode=aes-256-cts
@@ -57,7 +71,9 @@ ro.vendor.mtk_widevine_drm_l1_support=1
 # Display
 ro.opengles.version=196610
 ro.zygote.preload.enable=0
-ro.hardware.egl=mali
+ro.hardware.egl=meow
+ro.hardware.hwcomposer=mtk_common
+ro.vendor.composer_version=2.1
 ro.surface_flinger.primary_display_orientation=0
 ro.vendor.perf.scroll_opt=true
 ro.vendor.cabc.enable=true
@@ -70,6 +86,7 @@ persist.dbg.volte_avail_ovr=1
 persist.dbg.vt_avail_ovr=1
 persist.dbg.wfc_avail_ovr=1
 persist.vendor.ims_support=1
+persist.vendor.mtk_ct_volte_support=3
 persist.vendor.mtk_dynamic_ims_switch=1
 persist.vendor.mims_support=2
 persist.vendor.mtk_wfc_support=1
@@ -88,28 +105,66 @@ ro.kernel.zio=38,108,105,16
 persist.sys.mdlog_dumpback=2
 
 # Media
+media.c2.dmabuf.padding=3072
 media.stagefright.thumbnail.prefer_hw_codecs=true
+ro.vendor.mtk_video_hevc_enc_support=1
+vendor.mtk_thumbnail_optimization=true
 
 # Mediatek (Misc)
+debug.mtk_tflite.target_nnapi=29
+ro.vendor.have_aeev_feature=1
+ro.vendor.aee.convert64=0
+ro.iorapd.enable=false
+ro.vendor.connsys.dedicated.log=1
 ro.vendor.mediatek.platform=MT6768
 ro.vendor.smvr.p2batch.vga=8
 ro.vendor.smvr.p2batch.hd=4
+ro.vendor.mtk_nn_support=1
+ro.vendor.mtk_nn.option=D,E,F,Z
 ro.vendor.jpeg_decode_sw_opt=1
 ro.vendor.mtk_config_max_dram_size=0x800000000
 ro.vendor.mtk_f2fs_enable=0
 ro.vendor.num_md_protocol=2
-ro.vendor.mediatek.version.branch=alps-mp-r0.mp1.tc8sp2
-ro.vendor.mediatek.version.release=alps-mp-r0.mp1.tc8sp2-V2.1.1_huaqin.r0mp1.k69v1.64_P122
+ro.vendor.mediatek.version.branch=alps-mp-s0.mp1.tc8sp2-mt6833
+ro.vendor.mediatek.version.release=alps-mp-s0.mp1.tc8sp2-mt6833-V1.3.1_huaqin.xm.s0mp1.k6833v1.64_P20
 ro.vendor.mtk_wapi_support=1
 ro.vendor.mtk_wappush_support=1
 ro.vendor.mtk_agps_app=1
 ro.vendor.mtk_gps_support=1
 ro.vendor.mtk_fm_short_antenna_support=1
+ro.vendor.mtk_pq_color_mode=1
+ro.vendor.mtk_prefer_64bit_proc=0
+ro.vendor.mtk_pq_support=2
+ro.vendor.pq.mtk_pq_video_whitelist_support=0
+ro.vendor.pq.mtk_video_transition=0
+ro.vendor.pq.mtk_scltm_support=0
+ro.vendor.mml.mtk_mml_support=0
+ro.vendor.pq.mtk_ai_scence_pq_support=0
+ro.vendor.pq.mtk_hdr10_plus_recording_support=0
+ro.vendor.pq.mtk_ai_sdr_to_hdr_support=0
+ro.vendor.pq.mtk_ultra_resolution_support=0
+ro.vendor.pq.mtk_dc_support=1
+ro.vendor.pq.mtk_ds_support=0
+ro.vendor.pq.mtk_hfg_support=0
+ro.vendor.pq.mtk_caltm_support=1
+ro.vendor.pq.mtk_clearzoom_support=0
+ro.vendor.pq.mtk_mdp_ccorr_support=1
+ro.vendor.pq.mtk_pq_interface_support=0
+ro.vendor.pq.mtk_disp_c3d_support=0
+ro.vendor.pq.mtk_disp_tdshp_support=0
+ro.vendor.pq.mtk_disp_color_support=1
+ro.vendor.pq.mtk_disp_ccorr_support=0
+ro.vendor.pq.mtk_disp_gamma_support=1
+ro.vendor.pq.mtk_aal_support=1
+ro.vendor.mtk_aal_support=1
+ro.vendor.pq.mtk_dre30_support=0
+ro.vendor.pq.mtk_disp_game_pq_support=0
+ro.vendor.pq.mtk_backlight_smooth_support=1
+ro.vendor.pq.mtk_ultra_dimming_support=0
+ro.vendor.pq.mtk_blulight_def_support=0
+ro.vendor.mtk_mvpu_security_support=0
 ro.vendor.mtk_fd_support=1
 ro.vendor.mtk_emmc_support=1
-ro.vendor.mtk_aal_support=1
-ro.vendor.mtk_pq_support=2
-ro.vendor.mtk_pq_color_mode=1
 ro.vendor.mtk_blulight_def_support=1
 ro.vendor.mtk_wfd_support=1
 ro.vendor.mtk_world_phone_policy=0
@@ -143,6 +198,16 @@ ro.vendor.pref_scale_enable_cfg=1
 persist.vendor.md_c2k_cap_dep_check=0
 ro.vendor.mtk_uicc_clf=1
 ro.vendor.colorpick_adjust=true
+ro.vendor.mtk_nn_baseline_support=1
+ro.vendor.mtk_nn_quant_preferred=1
+persist.vendor.factory.GB2312=yes
+persist.vendor.vzw_device_type=0
+persist.vendor.wfc.sys_wfc_support=1
+ro.vendor.mtk.sensor.support=yes
+ro.vendor.mtk_omacp_support=1
+ro.vendor.mtk_flv_playback_support=1
+ro.vendor.mtk_cta_set=1
+ro.vendor.mtk_telephony_add_on_policy=0
 
 # Netflix
 ro.netflix.bsp_rev=MTK6768-19055-1
@@ -162,6 +227,11 @@ sys.ipo.pwrdncap=2
 # Radio
 persist.radio.multisim.config=dsds
 persist.vendor.radio.msimmode=dsds
+persist.sys.mms.compact_enable=true
+persist.sys.spc.enabled=true
+persist.sys.use_mi_new_strategy=true
+persist.sys.mmms.switch=true
+persist.sys.mms.bg_apps_limit=96
 persist.vendor.radio.fd.counter=150
 persist.vendor.radio.fd.off.counter=50
 persist.vendor.radio.fd.r8.counter=150
@@ -177,7 +247,7 @@ persist.vendor.radio.smart.data.switch=1
 ro.vendor.mtk_protocol1_rat_config=C/Lf/Lt/W/T/G
 ro.telephony.default_network=10,10,10,10
 ro.telephony.sim.count=2
-ro.vendor.mtk_md1_support=12
+ro.vendor.mtk_md1_support=9
 ro.vendor.mtk_c2k_lte_mode=2
 ro.vendor.mtk_eccci_c2k=1
 ro.vendor.mtk_ps1_rat=C/Lf/Lt/W/T/G
@@ -191,7 +261,11 @@ ro.vendor.radio.max.multisim=dsds
 import /vendor/build_${ro.boot.radio.multisim.config}_vendor.prop
 
 # SurfaceFlinger
-ro.surface_flinger.max_frame_buffer_acquired_buffers=3
-ro.surface_flinger.running_without_sync_framework=true
-ro.surface_flinger.vsync_event_phase_offset_ns=8300000
-ro.surface_flinger.vsync_sf_event_phase_offset_ns=8300000
+debug.sf.use_phase_offsets_as_durations=1
+debug.sf.late.sf.duration=27600000
+debug.sf.late.app.duration=20000000
+debug.sf.early.sf.duration=27600000
+debug.sf.early.app.duration=20000000
+debug.sf.earlyGl.sf.duration=27600000
+debug.sf.earlyGl.app.duration=20000000
+debug.sf.hwc.min.duration=17000000

@@ -44,7 +44,6 @@ persist.vendor.otg_control=true
 ro.sys.usb.bicr=no
 ro.sys.usb.charging.only=yes
 ro.sys.usb.mtp.whql.enable=0
-ro.sys.usb.storage.type=mtp
 
 # WiFi
 mediatek.wlan.ctia=0
