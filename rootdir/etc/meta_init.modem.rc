@@ -28,22 +28,8 @@ on post-fs-data
     # Encrypt phone function
     setprop vold.post_fs_data_done 1
 
-service vendor.ccci_fsd /vendor/bin/ccci_fsd 0
-    user radio
-    group radio system
-    oneshot
 
 service ccci_mdinit /vendor/bin/ccci_mdinit 0
-    user system
-    group radio system
-    oneshot
-
-service ccci3_fsd /vendor/bin/ccci_fsd 2
-    user radio
-    group radio system
-    oneshot
-
-service ccci3_mdinit /vendor/bin/ccci_mdinit 2
     user system
     group radio system
     oneshot

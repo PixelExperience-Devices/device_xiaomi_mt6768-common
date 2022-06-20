@@ -3,13 +3,13 @@
 import /vendor/etc/init/hw/init.connectivity.rc
 import /vendor/etc/init/hw/init.mt6768.usb.rc
 import /vendor/etc/init/hw/init.project.rc
+import /system_ext/etc/init/hw/init.aee.rc
 import /FWUpgradeInit.rc
 import /vendor/etc/init/hw/init.volte.rc
 import /vendor/etc/init/hw/init.mal.rc
 import /vendor/etc/init/hw/init.sensor_1_0.rc
 import /vendor/etc/init/hw/init.stnfc.rc
 import /system/etc/init/hw/init.stnfc.rc
-import init.mishow.ctl.rc
 
 # init.modem.rc must be the LAST rc file because vold.post_fs_data_done is set in it
 import /vendor/etc/init/hw/init.modem.rc
@@ -46,9 +46,6 @@ on init
     write /proc/sys/net/core/wmem_max 8388608
     write /proc/sys/net/core/rmem_max 8388608
 
-# open mtu probing function
-    write /proc/sys/net/ipv4/tcp_mtu_probing 1
-
 # update cpus for cpuset cgroup
     write /dev/cpuset/foreground/cpus 0-7
     write /dev/cpuset/foreground/boost/cpus 0-7
@@ -67,22 +64,7 @@ on charger
     write /proc/perfmgr/boost_ctrl/cpu_ctrl/boot_freq "-1 -1 -1 -1"
     write /sys/devices/platform/10012000.dvfsrc/helio-dvfsrc/dvfsrc_req_ddr_opp -1
 
-    write /proc/hps/enabled 0
-    write /sys/devices/system/cpu/cpu0/online 1
-    write /sys/devices/system/cpu/cpu1/online 1
-    write /sys/devices/system/cpu/cpu2/online 1
-    write /sys/devices/system/cpu/cpu3/online 1
-    write /sys/devices/system/cpu/cpu7/online 0
-    write /sys/devices/system/cpu/cpu6/online 0
-    write /sys/devices/system/cpu/cpu5/online 0
-    write /sys/devices/system/cpu/cpu4/online 0
-
-    write /sys/power/pm_async 0
-    
-    # Turn backlight on and switch to backlight trigger
-    write /sys/class/leds/lcd-backlight/brightness "1000"
-    write /sys/class/leds/lcd-backlight/trigger "backlight"
-    exec /bin/e2fsck -f -p /dev/block/platform/bootdevice/by-name/cache
+    exec /system/bin/e2fsck -f -p /dev/block/platform/bootdevice/by-name/cache
     mount ext4 /dev/block/platform/bootdevice/by-name/cache /cache rw wait
     chmod 0660 /dev/spm
     chown system system /dev/spm
@@ -115,20 +97,15 @@ on charger
     chown system system /sys/class/leds/lcd-backlight/brightness
     chown system system /sys/class/leds/red/brightness
     chown system system /sys/class/leds/green/brightness
-    chown system system /sys/class/huaqin/interface/hw_info/lcm
-    chmod 0660 /sys/class/huaqin/interface/hw_info/lcm
-    chown system system /proc/nvt_pocket_palm_switch
-    chmod 0660 /proc/nvt_pocket_palm_switch
-    chown system system /proc/nvt_edge_reject_switch
-    chmod 0660 /proc/nvt_edge_reject_switch
-    chown system system /sys/devices/platform/1100a000.spi0/spi_master/spi0/spi0.0/fts_rw_reg
-    chmod 0660 /sys/devices/platform/1100a000.spi0/spi_master/spi0/spi0.0/fts_rw_reg
 
     start vendor.light-default
     start mi_thermald
 
+on property:sys.boot_completed=1
+    write /proc/pl_lk "0"
+
 on fs
-    start vendor.boot-hal-1-1
+    start vendor.boot-hal-1-2
 
     # mount fstab
     write /proc/bootprof "INIT:Mount_START"
@@ -136,6 +113,7 @@ on fs
     mount_all /vendor/etc/fstab.mt6768 --early
     write /sys/kernel/tracing/trace_marker "E"
     write /proc/bootprof "INIT:Mount_END"
+
     write /sys/block/zram0/comp_algorithm lz4
     write /proc/sys/vm/page-cluster 0
     write /proc/sys/vm/swappiness 100
@@ -178,18 +156,19 @@ on post-fs
 
     chown system system /mnt/vendor/protect_s
     chmod 0770 /mnt/vendor/protect_s
-    
-    
+
+    # allow ccci_mdinit access ccci_dump
+    chown root system /proc/ccci_dump
+
 #tp ito
     chown system system /proc/tp_selftest
     chmod 0664 /proc/tp_selftest
-    
-    
+
+
 
 on late-fs
     write /proc/bootprof "INIT:late-fs"
     wait_for_prop hwservicemanager.ready "true"
-    exec_start wait_for_keymaster
     setprop init.userspace_reboot.userdata_remount.timeoutmillis 10000
     mount_all /vendor/etc/fstab.mt6768 --late
     exec /system/bin/tune2fs -O has_journal -u 10010 -r 4096 /dev/block/platform/bootdevice/by-name/userdata
@@ -345,6 +324,8 @@ on post-fs-data
     #mknod /dev/M4U_device c 188 0
     chmod 0444 /dev/m4u
     #chown system media /dev/M4U_device
+    chmod 0640 /proc/m4u
+    chown system media /proc/m4u
 
     #set mlock limit to infinate (for m4u operation)
     setrlimit 8 -1 -1
@@ -388,7 +369,7 @@ on post-fs-data
     chown mediacodec system /dev/video0
     chmod 0660 /dev/video1
     chown mediacodec system /dev/video1
-    mkdir /data/vendor/vcodec 0770 media system
+    mkdir /data/vendor/vcodec 0777 media system
     mkdir /data/vendor/vcodec/log 0770 media system
     mkdir /data/vendor/vcodec/in 0770 media system
     mkdir /data/vendor/vcodec/out 0770 media system
@@ -404,11 +385,6 @@ on post-fs-data
 
     #Charging Battery
     chown radio radio /sys/devices/platform/battery/Charging_CallState
-
-    #Runin Charge Control
-    chmod 0777 /sys/class/power_supply/battery/input_suspend
-    chown system system /sys/class/power_supply/battery/input_suspend
-    
 
     # PMIC property
     chown radio system /sys/devices/platform/mt-pmic/low_battery_protect_stop
@@ -541,12 +517,6 @@ on post-fs-data
 
     #ITO
     chmod 0777 /data/local/tmp
-
-    #FM
-    chmod 0777 /sys/class/fm/fm/lan_enable
-
-    #Charge
-    chmod 0777 /sys/class/power_supply/usb/reverse_chg_otg
 
     # JPEG
     #chmod 0444 /dev/mtk_jpeg
@@ -787,6 +757,9 @@ on boot
     chown root root /dev/graphics/fb0
     chmod 0666 /dev/graphics/fb0
 
+    chmod 0777 /sys/class/power_supply/battery/input_suspend
+    chown system system /sys/class/power_supply/battery/input_suspend
+
     chown root system /sys/class/huaqin/interface/hw_info/main0_cam
     chmod 0666 /sys/class/huaqin/interface/hw_info/main0_cam
     chown root system /sys/class/huaqin/interface/hw_info/main1_cam
@@ -936,9 +909,6 @@ on boot
     chown system radio /dev/ttyGS1
 
     chown system system /sys/class/thermal/thermal_message/sconfig
-
-# Stop bootprof
-on property:sys.boot_completed=1
 #Power Manager
     write /sys/power/pm_freeze_timeout 2000
 
@@ -1038,13 +1008,31 @@ on property:persist.vendor.mediatek.fg.log.enable=1
 
 # add meta_tst for ATM
 service meta_tst /vendor/bin/meta_tst
-    class main
-    user system
+    class core
+    user root
     group radio gps system wifi audio bluetooth media
     capabilities NET_RAW NET_ADMIN
+    socket meta-atci stream 660 radio system
     disabled
     oneshot
 
+service openad /system/vendor/bin/displayf_bin s 1
+    user root
+    group root system graphics
+    oneshot
+    disabled
+
+on property:sys.hq.ad=1
+    start openad
+
+service closead /system/vendor/bin/displayf_bin s 0
+    user root
+    group root system graphics
+    oneshot
+    disabled
+
+on property:sys.hq.ad=0
+    start closead
 
 service initprop_bin /system/vendor/bin/initprop_bin
     class main
@@ -1078,29 +1066,13 @@ on property:persist.odm.ril.oem.imei1=*
 on property:persist.odm.ril.oem.imei2=*
     setprop ro.ril.oem.imei2 ${persist.odm.ril.oem.imei2}
 
-service openad /system/vendor/bin/displayf_bin s 1
+service factory_no_image /vendor/bin/factory
     user root
-    group root system graphics
-    oneshot
+    group radio system wifi media gps audio bluetooth wakelock nfc
+    capabilities BLOCK_SUSPEND NET_RAW NET_ADMIN SYS_ADMIN SYS_BOOT
+    socket factory-atci stream 660 radio system
     disabled
-
-on property:sys.hq.ad=1
-    start openad
-
-service closead /system/vendor/bin/displayf_bin s 0
-    user root
-    group root system graphics
     oneshot
-    disabled
-
-on property:sys.hq.ad=0
-    start closead
-
-# add PcbaConfigSet
-service PcbaConfigSet /system/vendor/bin/PcbaConfigSet
-    class core
-    oneshot
-
 service screenmode0 /system/vendor/bin/factory_bin s 0
     class main
     user root
@@ -1143,8 +1115,6 @@ service disablefreqhop /system/vendor/bin/factory_bin c 0
     oneshot
     disabled
 
-on init
-    symlink /dev/block/platform/bootdevice /dev/block/bootdevice
 service enableswtp /system/vendor/bin/factory_bin z 1
     class main
     user root
@@ -1168,6 +1138,21 @@ service digpio /system/vendor/bin/factory_bin y 0
     user root
     oneshot
     disabled
+	
+# start meta_tst for ATM
+on property:sys.boot_completed=1 && property:ro.boot.atm=enable
+    start meta_tst
+
+# reset mdmode when modem crash happens in ATM
+on property:vendor.mtk.md1.status=reset
+    setprop persist.vendor.atm.mdmode normal
+
+on init
+    symlink /dev/block/platform/bootdevice /dev/block/bootdevice
+
+# FPSGO FBT Game
+on boot
+    insmod /vendor/lib/modules_prebuilt/fpsgo.ko
 
 service maxcurrentNocall /system/vendor/bin/factory_bin m 0
     class main
@@ -1186,6 +1171,10 @@ service mi_thermald /vendor/bin/mi_thermald
     user root
     group system
     seclabel u:r:mi_thermald:s0
+# add PcbaConfigSet
+service PcbaConfigSet /system/vendor/bin/PcbaConfigSet
+    class core
+    oneshot
     
 service charger /bin/charger
     class charger
