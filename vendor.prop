@@ -208,6 +208,7 @@ ro.vendor.mtk_omacp_support=1
 ro.vendor.mtk_flv_playback_support=1
 ro.vendor.mtk_cta_set=1
 ro.vendor.mtk_telephony_add_on_policy=0
+ro.vendor.init.sensor.rc=init.sensor_1_0.rc
 
 # Netflix
 ro.netflix.bsp_rev=MTK6768-19055-1
