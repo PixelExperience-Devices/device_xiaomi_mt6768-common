@@ -29,7 +29,6 @@ PRODUCT_PACKAGES += \
     android.hardware.audio.effect@6.0-impl \
     android.hardware.audio@7.0.vendor \
     android.hardware.audio.common@7.0-enums \
-    android.hardware.audio.service \
     android.hardware.audio@7.0-util.vendor \
     android.hardware.audio.common@7.0-util \
     android.hardware.audio@6.0.vendor \
