@@ -28,15 +28,6 @@ on init
     # setprop ro.vold.primary_physical 1
     
     setprop sys.usb.ffs.aio_compat 1
-    
-    # DT2W
-    chown system input /dev/input/event0
-    chown system input /dev/input/event1
-    chown system input /dev/input/event2
-    chown system input /dev/input/event3
-    chown system input /dev/input/event4
-    chown system input /dev/input/event5
-    chown system input /dev/input/event6
 
 # change lk_env permission
     chown root system /proc/lk_env
@@ -1198,9 +1189,3 @@ on property:ro.boot.product.hardware.sku=merlinnfc
     
 on property:ro.boot.product.hardware.sku=galahad
     start vendor.nfc_hal_service
-
-on property:persist.sys.MT6768.dt2w=0
-    exec_background - system input -- /vendor/bin/dt2w_event 4
-
-on property:persist.sys.MT6768.dt2w=1
-    exec_background - system input -- /vendor/bin/dt2w_event 5
