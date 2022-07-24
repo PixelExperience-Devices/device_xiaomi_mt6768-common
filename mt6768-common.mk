@@ -93,7 +93,8 @@ PRODUCT_PACKAGES += \
     android.hardware.camera.device@3.3.vendor \
     android.hardware.camera.device@3.4.vendor \
     android.hardware.camera.device@3.5.vendor \
-    android.hardware.camera.device@3.6.vendor
+    android.hardware.camera.device@3.6.vendor \
+    libdng_sdk.vendor
 
 # CAS
 PRODUCT_PACKAGES += \
