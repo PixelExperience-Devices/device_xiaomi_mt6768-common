@@ -409,6 +409,11 @@
          Equivalent to 1/255. -->
     <item name="config_screenBrightnessSettingMinimumFloat" format="float" type="dimen">0.003921569</item>
 
+    <!-- Maximum screen brightness allowed by the power manager.
+         The user is forbidden from setting the brightness above this level.
+         This value is a fraction between 3.5% and 100%. -->
+    <item name="config_screenBrightnessSettingMaximumFloat" format="float" type="dimen">1.0</item>
+
     <!-- Enable Zram writeback feature to allow unused pages in zram be written to flash. -->
     <bool name="config_zramWriteback">true</bool>
 
