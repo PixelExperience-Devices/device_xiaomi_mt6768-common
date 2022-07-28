@@ -77,7 +77,6 @@ PRODUCT_COPY_FILES += \
 
 # Bluetooth
 PRODUCT_PACKAGES += \
-    libbtconfigstore \
     libbluetooth_audio_session.vendor \
     android.hardware.bluetooth@1.0.vendor \
     android.hardware.bluetooth@1.1.vendor \
