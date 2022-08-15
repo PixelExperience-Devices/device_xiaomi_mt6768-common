@@ -1,4 +1,0 @@
-service vendor.vibrator-mt6768 /vendor/bin/hw/android.hardware.vibrator-service.mt6768
-    class hal
-    user system
-    group system
