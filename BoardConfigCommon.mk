@@ -72,6 +72,9 @@ TARGET_SCREEN_DENSITY := 440
 # Platform
 TARGET_BOARD_PLATFORM := mt6768
 
+# Power
+TARGET_POWERHAL_MODE_EXT := $(COMMON_PATH)/power/power-mode.cpp
+
 # Charger
 BOARD_CHARGER_ENABLE_SUSPEND := true
 
