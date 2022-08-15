@@ -2,7 +2,7 @@
 audio_para_version=J15S-Audiopara-V19-20200420
 ro.audio.silent=0
 ro.camera.sound.forced=0
-ro.config.vc_call_vol_steps=6
+ro.config.vc_call_vol_steps=9
 
 # Brand
 Build.BRAND=MTK
