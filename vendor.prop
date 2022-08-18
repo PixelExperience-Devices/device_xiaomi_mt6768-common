@@ -15,6 +15,7 @@ ro.vendor.mtk_audio_ape_support=1
 ro.vendor.mtk_besloudness_support=0
 
 # Camera
+camera.disable_zsl_mode=1
 vendor.camera.mdp.cz.enable=1
 ro.vendor.camera3.zsl.default=140
 ro.vendor.camera.isp.support.colorspace=0
