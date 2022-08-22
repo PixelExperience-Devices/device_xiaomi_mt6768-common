@@ -263,6 +263,7 @@ PRODUCT_COPY_FILES += \
 
 # Properties
 include $(COMMON_PATH)/vendor_logtag.mk
+TARGET_SYSTEM_EXT_PROP += $(COMMON_PATH)/system_ext.prop
 PRODUCT_COMPATIBLE_PROPERTY_OVERRIDE := true
 
 # Public Libraries
