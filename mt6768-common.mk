@@ -349,8 +349,12 @@ PRODUCT_SOONG_NAMESPACES += \
     hardware/mediatek
 
 # Overlays
-DEVICE_PACKAGE_OVERLAYS += \
-    $(COMMON_PATH)/overlay
+PRODUCT_PACKAGES += \
+    FrameworksResOverlayMT6768 \
+    SystemUIOverlayMT6768 \
+    TelephonyOverlayMT6768 \
+    TetheringConfigOverlayMT6768 \
+    WifiOverlayMT6768
 
 # Dynamic Partitions 
 PRODUCT_SHIPPING_API_LEVEL := 29
@@ -435,8 +439,6 @@ PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/wifi/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf
 
 PRODUCT_PACKAGES += \
-    WifiOverlay \
-    TetheringConfigOverlay \
     hostapd \
     android.hardware.tetheroffload.config@1.0.vendor \
     android.hardware.tetheroffload.control@1.0.vendor \
