@@ -322,6 +322,10 @@ PRODUCT_PACKAGES += \
     android.hardware.sensors@2.0-ScopedWakelock.vendor \
     android.hardware.sensors@2.1.vendor
 
+# Shim
+PRODUCT_PACKAGES += \
+    libwatermark_shim
+
 # Thermal
 PRODUCT_PACKAGES += \
     android.hardware.thermal@1.0-impl \
