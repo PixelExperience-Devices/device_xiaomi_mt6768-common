@@ -2,6 +2,5 @@ typeattribute hal_fingerprint_default data_between_core_and_vendor_violators;
 
 allow hal_fingerprint_default fp_data_file:dir r_dir_perms;
 allow hal_fingerprint_default fp_data_file:file rw_file_perms;
-allow hal_fingerprint_default fp_device:chr_file rw_file_perms;
 
 set_prop(hal_fingerprint_default, vendor_fp_prop)
