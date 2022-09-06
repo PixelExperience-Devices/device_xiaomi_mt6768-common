@@ -19,10 +19,6 @@ COMMON_PATH := device/xiaomi/mt6768-common
 # Include Dev GSI Keys
 $(call inherit-product, $(SRC_TARGET_DIR)/product/developer_gsi_keys.mk)
 
-# APNs
-PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/configs/apns-conf.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/apns-conf.xml
-
 # Audio
 PRODUCT_PACKAGES += \
     android.hardware.audio.service.mediatek \
