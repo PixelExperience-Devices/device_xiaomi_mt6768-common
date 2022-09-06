@@ -359,6 +359,7 @@ PRODUCT_SOONG_NAMESPACES += \
 
 # Overlays
 PRODUCT_PACKAGES += \
+    CarrierConfigOverlayMT6768 \
     FrameworksResOverlayMT6768 \
     SystemUIOverlayMT6768 \
     TelephonyOverlayMT6768 \
