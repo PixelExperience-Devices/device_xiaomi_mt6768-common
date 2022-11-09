@@ -24,9 +24,6 @@ pm.dexopt.first-boot=quicken
 dalvik.vm.dex2oat-cpu-set=0,1,2,3,4,5
 dalvik.vm.dex2oat-threads=6
 
-# FUSE passthrough
-persist.sys.fuse.passthrough.enable=true
-
 # RIL
 persist.sys.fflag.override.settings_provider_model=false
 
